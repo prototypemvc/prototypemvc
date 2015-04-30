@@ -6,6 +6,6 @@ class Model {
 	
 	public function __construct(){
 		//connect to PDO here.
-		$this->_db = new Database();
+		//$this->_db = new Database();
 	}
 }

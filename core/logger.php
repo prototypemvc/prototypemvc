@@ -24,7 +24,7 @@ class Logger {
        return 0; 
    }
 
-   public static function newMessage(Exception $exception, $print_error = false, $clear = false, $error_file = 'errorlog.html') {
+   public static function newMessage(Exception $exception, $print_error = false, $clear = false, $error_file = '../errorlog.html') {
       
       $message = $exception->getMessage();
       $code = $exception->getCode();
@@ -61,7 +61,7 @@ class Logger {
       }
    }
 
-   public static function errorMessage($error, $print_error = false, $error_file = 'errorlog.html') {
+   public static function errorMessage($error, $print_error = false, $error_file = '../errorlog.html') {
 
       $date = date('M d, Y G:iA');
       $log_message = "<p>Error on $date - $error</p>";
