@@ -32,3 +32,4 @@ Full docs & tutorials are available at [simplemvcframework.com](http://simplemvc
 ## Acknowledgement
 
 I'd like to thank [Jessie](http://jream.com/) from jream.com, for producing an excellent video series on making an MVC system, this framework was evolved from that foundation.
+
