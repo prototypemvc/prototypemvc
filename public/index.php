@@ -24,12 +24,12 @@ define('SITETITLE','Simple MVC Framework');
 
 function autoloadsystem($class) {
 
-   $filename = DOCROOT . "/core/" . strtolower($class) . ".php";
+   $filename = "../core/" . strtolower($class) . ".php";
    if(file_exists($filename)){
       require $filename;
    }
 
-   $filename = DOCROOT . "/helpers/" . strtolower($class) . ".php";
+   $filename = "../helpers/" . strtolower($class) . ".php";
    if(file_exists($filename)){
       require $filename;
    } 

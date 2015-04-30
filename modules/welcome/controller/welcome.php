@@ -11,7 +11,7 @@ class Welcome extends Controller{
 		$data['title'] = 'Welcome';
 
 		$this->_view->rendertemplate('header',$data);
-		$this->_view->render('welcome/welcome',$data);
+		$this->_view->render('welcome/view/welcome',$data);
 		$this->_view->rendertemplate('footer',$data);
 	}
 	

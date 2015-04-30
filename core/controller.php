@@ -13,7 +13,7 @@ class Controller extends Bootstrap {
 	//function to load model on request
 	public function loadModel($name){
 
-		$modelpath = strtolower('models/'.$name.'.php');
+		$modelpath = strtolower('../modules/'.explode('_', $name)[0].'/model/'.$name.'.php');
 
 		//try to load and instantiate model		
 		if(file_exists($modelpath)){

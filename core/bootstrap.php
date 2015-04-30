@@ -42,7 +42,7 @@ class Bootstrap {
     }
 
     protected function _loadDefaultController(){
-        require 'controllers/'.$this->_defaultController.'.php';
+        require '../modules/'.$this->_defaultController.'/controller/'.$this->_defaultController.'.php';
         $this->_controller = new $this->_defaultController();
         $this->_controller->index();
     }
@@ -50,7 +50,7 @@ class Bootstrap {
     protected function _loadExistingController(){
 
         //set url for controllers
-        $file = 'controllers/'.$this->_url[0].'.php';
+        $file = '../modules/'.$this->_url[0].'/controller/'.$this->_url[0].'.php';
 
         if(file_exists($file)){
             require $file;
@@ -123,7 +123,7 @@ class Bootstrap {
      * @return boolean
      */
     protected function _error($error) {
-        require 'core/error.php';
+        //require '../modules/error/view/404.php';
         $this->_controller = new Error($error);
         $this->_controller->index();
         die;
