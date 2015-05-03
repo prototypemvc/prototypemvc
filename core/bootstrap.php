@@ -18,10 +18,6 @@ class Bootstrap {
         $this->_defaultController = $name; 
     }
 
-    public function setTemplate($template){
-       Session::set('template',$template);
-    }
-
     public function init(){
 
         //if no page requested set default controller
@@ -123,7 +119,7 @@ class Bootstrap {
      * @return boolean
      */
     protected function _error($error) {
-        //require '../modules/error/view/404.php';
+        require '../core/error.php';
         $this->_controller = new Error($error);
         $this->_controller->index();
         die;

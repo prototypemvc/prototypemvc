@@ -1,6 +1,6 @@
 <?php
 
-class Welcome extends Controller{
+class welcome extends controller{
 
 	public function __construct(){
 		parent::__construct();
@@ -8,11 +8,40 @@ class Welcome extends Controller{
 
 	public function index(){
 
-		$data['title'] = 'Welcome';
+		$data['title'] = 'welcome';
 
-		$this->_view->rendertemplate('header',$data);
-		$this->_view->render('welcome/view/welcome',$data);
-		$this->_view->rendertemplate('footer',$data);
+		view::load('header.php', $data);
+		view::load('welcome/view/welcome', $data);
+		view::load('footer.php');
+	}
+
+	public function css(){
+
+		$data['title'] = 'welcome';
+	
+		view::css('test');
+		view::load('header.php', $data);
+		view::load('welcome/view/welcome', $data);
+		view::load('footer.php');
+	}
+
+	public function javascript(){
+
+		$data['title'] = 'welcome';
+	
+		view::load('header.php', $data);
+		view::load('welcome/view/welcome', $data);
+		view::load('footer.php');
+		view::js('test');
+	}
+
+	public function json(){
+
+		$Welcome = model::load('welcome/model/welcome_model');
+
+		$array = $Welcome->getArray();
+	
+		view::json($array);
 	}
 	
 }
