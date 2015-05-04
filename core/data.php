@@ -2,7 +2,7 @@
 
 class data {
 
-    public static function dump($data) {
+    public static function dump($data = false) {
 
         if(isset($data)) {
             
@@ -13,9 +13,14 @@ class data {
         return false;
     }
 
-    public static function get() {
+    public static function get($key = false) {
 
         if(isset($_GET)) {
+
+            if($key) {
+
+                return $_GET[$key];
+            }
 
             return $_GET;
         }
@@ -23,9 +28,14 @@ class data {
         return false;
     }
 
-    public static function post() {
+    public static function post($key = false) {
 
         if(isset($_POST)) {
+
+            if($key) {
+
+                return $_POST[$key];
+            }
 
             return $_POST;
         }
@@ -69,9 +79,14 @@ class data {
         }
     }
 
-    public static function session() {
+    public static function session($key = false) {
 
         if(isset($_SESSION)) {
+
+            if($key) {
+
+                return $_SESSION[$key];
+            }
 
             return $_SESSION;
         }
@@ -79,18 +94,23 @@ class data {
         return false;
     }
 
-    public static function type($data) {
+    public static function type($data = false) {
 
-        $dataType = gettype($data);
+        if($data) {
 
-        if($dataType === 'string') {
+            $dataType = gettype($data);
 
-            if(validate::isJson($data)) {
-                $dataType = 'json';
+            if($dataType === 'string') {
+
+                if(validate::isJson($data)) {
+                    $dataType = 'json';
+                }
             }
+
+            return $dataType;
         }
 
-        return $dataType;
+        return false;
     }
 
 }

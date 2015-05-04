@@ -12,19 +12,9 @@ class validate {
         return false;
     }
 
-    public static function isEmail($input) {
+    public static function isEmail($input = false) {
 
-    	if (!filter_var($input, FILTER_VALIDATE_EMAIL) === false) {
-
-    		return true;
-    	}
-
-    	return false;
-    }
-
-    public static function isIp($input) {
-
-    	if (!filter_var($input, FILTER_VALIDATE_IP) === false) {
+    	if ($input && !filter_var($input, FILTER_VALIDATE_EMAIL) === false) {
 
     		return true;
     	}
@@ -32,9 +22,39 @@ class validate {
     	return false;
     }
 
-    public static function isJson($string) {
+    public static function isFloat($input = false) {
 
-        if (is_object(json_decode($string))) { 
+        if($input && is_float($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isInt($input = false) {
+
+        if($input && is_int($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isIp($input = false) {
+
+    	if ($input && !filter_var($input, FILTER_VALIDATE_IP) === false) {
+
+    		return true;
+    	}
+
+    	return false;
+    }
+
+    public static function isJson($string = false) {
+
+        if ($string && is_object(json_decode($string))) { 
 
             return true;
         }
@@ -55,9 +75,29 @@ class validate {
         return false;
     }
 
+    public static function isNumber($input = false) {
+
+        if($input && is_numeric($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isString($input = false) {
+
+        if($input && is_string($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
     public static function isUrl($input) {
 
-    	if (!filter_var($input, FILTER_VALIDATE_URL) === false) {
+    	if ($input && !filter_var($input, FILTER_VALIDATE_URL) === false) {
 
     		return true;
     	}

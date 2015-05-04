@@ -34,7 +34,7 @@ class format {
 
 	public static function jsonToArray($json = false) {
 
-		if($json) { 
+		if($json && validate::isJson($json)) { 
 		
 			return json_decode($json);
 		}
@@ -44,7 +44,7 @@ class format {
 
 	public static function stringToArray($string = false, $delimiter = ' ') {
 
-		if($string) {
+		if($string && validate::isString($string)) {
 
 			return explode($delimiter, $string);
 		}
@@ -55,15 +55,16 @@ class format {
 	public static function toBool($var = false) {
 
 		if($var) { 
+
 			return (bool) $var;
 		}
 
 		return false;
 	}
 
-	public static function toFloat($var) {
+	public static function toFloat($var = false) {
 
-		if($var) {
+		if($var && validate::isNumber($var)) {
 		
 			return (float) $var;
 		}
@@ -73,7 +74,7 @@ class format {
 
 	public static function toInt($var = false) {
 
-		if($var) {
+		if($var && validate::isNumber($var)) {
 			
 			return (int) $var;
 		}

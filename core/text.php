@@ -12,54 +12,90 @@ class text {
         return false;
     }
 
-    public static function count($string, $selector = false) {
+    public static function count($string = false, $selector = false) {
 
-    	switch ($selector) {
-    		case 'words': 
-    			return str_word_count($string);
-    		default:
-    			if(self::substring($selector, 0, 1) === ':') {
-    				return substr_count($string, self::substring($selector, 1));
-    			}
-    			return self::length($string);
-    	}
+        if($string) {
+
+        	switch ($selector) {
+        		case 'words': 
+        			return str_word_count($string);
+        		default:
+        			if(self::substring($selector, 0, 1) === ':') {
+        				return substr_count($string, self::substring($selector, 1));
+        			}
+        			return self::length($string);
+        	}
+        }
+
+        return false;
     }
 
-    public static function length($string) {
+    public static function length($string = false) {
 
-    	return strlen($string);
+        if($string) {
+    	   
+           return strlen($string);
+       }
+
+       return false;
     }
 
-    public static function lowercase($string, $selector = false) {
+    public static function lowercase($string = false, $selector = false) {
 
-    	switch ($selector) {
-    		case 'first': 
-    			return lcfirst($string);
-    		case 'words':
-    			return lcwords($string);
-    		default:
-    			return strtolower($string);
-    	}
+        if($string) {
+
+        	switch ($selector) {
+        		case 'first': 
+        			return lcfirst($string);
+        		case 'words':
+        			return lcwords($string);
+        		default:
+        			return strtolower($string);
+        	}
+        }
+
+        return false;
     }
 
-    public static function replace($string, $find, $replaceWith = '') {
+    public static function replace($string = false, $find = false, $replaceWith = '') {
 
-        return str_replace($find, $replaceWith, $string);
+        if($string && $find) {
+
+            return str_replace($find, $replaceWith, $string);
+        }
+
+        return false;
     }
 
-    public static function reverse($string) {
+    public static function reverse($string = false) {
 
-    	return strrev($string);
+        if($string) {
+
+            return strrev($string);
+        }
+    	
+
+        return false;
     }
 
-    public static function shuffle($string) {
+    public static function shuffle($string = false) {
 
-    	return str_shuffle($string);
+        if($string) {
+    	
+            return str_shuffle($string);
+        }
+
+        return false;
     }
 
-    public static function strip($string) {
+    public static function strip($string = false) {
 
-    	return trim($string);
+        if($string) {
+    	
+            return trim($string);
+        }
+
+        return false;
     }
 
     // Stephen Watkins - stackoverflow
@@ -87,26 +123,36 @@ class text {
         return 'Random text could not be loaded...';
     }
 
-    public static function substring($string, $firstIndex = 0, $maxStringLength = false) {
+    public static function substring($string = false, $firstIndex = 0, $maxStringLength = false) {
 
-    	if(!$maxStringLength) {
+        if($string) {
 
-    		$maxStringLength = (self::length($string) - $firstIndex);
-    	}
+        	if(!$maxStringLength) {
 
-    	return substr($string, $firstIndex, $maxStringLength);
+        		$maxStringLength = (self::length($string) - $firstIndex);
+        	}
+
+        	return substr($string, $firstIndex, $maxStringLength);
+        }
+
+        return false;
     }
 
-    public static function uppercase($string, $selector = false) {
+    public static function uppercase($string = false, $selector = false) {
 
-    	switch ($selector) {
-    		case 'first': 
-    			return ucfirst($string);
-    		case 'words':
-    			return ucwords($string);
-    		default:
-    			return strtoupper($string);
-    	}
+        if($string) {
+
+        	switch ($selector) {
+        		case 'first': 
+        			return ucfirst($string);
+        		case 'words':
+        			return ucwords($string);
+        		default:
+        			return strtoupper($string);
+        	}
+        }
+
+        return false;
     }
 	
 }

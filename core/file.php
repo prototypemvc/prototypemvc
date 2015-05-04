@@ -20,7 +20,12 @@ class file {
 
 	public static function extension($file = false) {
 
-		return pathinfo($file, PATHINFO_EXTENSION);
+		if($file && self::isFile($file)) {
+
+			return pathinfo($file, PATHINFO_EXTENSION);
+		}
+
+		return false;
 	}
 
 	public static function get($file = false) {

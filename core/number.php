@@ -2,9 +2,9 @@
 
 class number {
 
-    public static function average($array, $decimals = 2) {
+    public static function average($array = false, $decimals = 2) {
 
-        if(is_array($array)) {
+        if($array && is_array($array)) {
 
             return self::round((array_sum($array) / count($array)), $decimals); 
         }
@@ -12,9 +12,9 @@ class number {
         return false;
     }
 
-    public static function max($array, $decimals = 3) {
+    public static function max($array = false, $decimals = 3) {
 
-        if(is_array($array)) {
+        if($array && is_array($array)) {
 
             return self::round(max($array), $decimals);
         }
@@ -22,9 +22,9 @@ class number {
         return false;
     }
 
-    public static function min($array, $decimals = 3) {
+    public static function min($array = false, $decimals = 3) {
 
-        if(is_array($array)) {
+        if($array && is_array($array)) {
 
             return self::round(min($array), $decimals);
         }
@@ -32,9 +32,14 @@ class number {
         return false;
     }
 
-    public static function percentage($number1, $number2, $decimals = 2) {
+    public static function percentage($number1 = false, $number2 = false, $decimals = 2) {
 
-        return self::round(($number1 / $number2) * 100, $decimals);
+        if($number1 && $number2) {
+
+            return self::round(($number1 / $number2) * 100, $decimals);
+        }
+
+        return false;
     }
 
     public static function random($min = 1, $max = 10000000) {
@@ -42,30 +47,38 @@ class number {
         return mt_rand($min, $max);
     }
 
-    public static function round($number, $decimals = false) {
+    public static function round($number = false, $decimals = false) {
 
-        return number_format((float)$number, $decimals);
-    }
+        if($number) {
 
-    public static function sum($number1, $number2, $operator = '+', $decimals = 3) {
-
-        switch ($operator) {
-            case '+':
-                return self::round(($number1 + $number2), $decimals);
-            case '-':
-                return self::round(($number1 - $number2), $decimals);
-            case '%':
-                return self::percentage($number1, $number2, $decimals);
-            case '/':
-                return self::round(($number1 / $number2), $decimals);
+            return number_format((float)$number, $decimals);
         }
 
         return false;
     }
 
-    public static function total($array) {
+    public static function sum($number1 = false, $number2 = false, $operator = '+', $decimals = 3) {
 
-        if(is_array($array)) {
+        if($number1 && $number2) {
+
+            switch ($operator) {
+                case '+':
+                    return self::round(($number1 + $number2), $decimals);
+                case '-':
+                    return self::round(($number1 - $number2), $decimals);
+                case '%':
+                    return self::percentage($number1, $number2, $decimals);
+                case '/':
+                    return self::round(($number1 / $number2), $decimals);
+            }
+        }
+
+        return false;
+    }
+
+    public static function total($array = false) {
+
+        if($array && is_array($array)) {
 
             return array_sum($array);
         }
