@@ -12,6 +12,21 @@ class validate {
         return false;
     }
 
+    public static function isBool($input = false) {
+
+        return self::isBoolean($input);
+    }
+
+    public static function isBoolean($input = false) {
+
+        if ($input && is_bool($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
     public static function isEmail($input = false) {
 
     	if ($input && !filter_var($input, FILTER_VALIDATE_EMAIL) === false) {
@@ -33,6 +48,11 @@ class validate {
     }
 
     public static function isInt($input = false) {
+
+        return self::isInteger($input);
+    }
+
+    public static function isInteger($input = false) {
 
         if($input && is_int($input)) {
 
@@ -77,7 +97,22 @@ class validate {
 
     public static function isNumber($input = false) {
 
+        return self::isNumeric($input);
+    }
+
+    public static function isNumeric($input = false) {
+
         if($input && is_numeric($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isObject($input = false) {
+
+        if($input && is_object($input)) {
 
             return true;
         }
@@ -92,6 +127,16 @@ class validate {
             return true;
         }
 
+        return false;
+    }
+
+    public static function isType($input = false, $type = false) {
+
+        if($input && $type && data::type($input) == $type) {
+
+            return true;
+        }
+        
         return false;
     }
 
