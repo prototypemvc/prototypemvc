@@ -27,6 +27,16 @@ class validate {
         return false;
     }
 
+    public static function isMac($input = false) {
+
+        if ($input && !filter_var($input, FILTER_VALIDATE_MAC) === false) {
+
+            return true;
+        }
+
+        return false;
+    }
+
     public static function isEmail($input = false) {
 
     	if ($input && !filter_var($input, FILTER_VALIDATE_EMAIL) === false) {
