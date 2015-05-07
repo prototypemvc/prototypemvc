@@ -43,5 +43,20 @@ class welcome extends controller{
 	
 		view::json($array);
 	}
+
+	public function load(){
+
+		$data['title'] = 'welcome';
+
+		$Welcome = load::model('welcome/model/welcome_model');
+
+		data::pre($Welcome->getArray());
+	
+		load::css('test');
+		load::view('header.php', $data);
+		load::view('welcome/view/welcome', $data);
+		load::view('footer.php');
+		load::js('test');
+	}
 	
 }
