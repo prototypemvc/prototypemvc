@@ -4,7 +4,7 @@ class number {
 
     public static function average($array = false, $decimals = 2) {
 
-        if($array && is_array($array)) {
+        if($array && validate::isArray($array)) {
 
             return self::round((array_sum($array) / count($array)), $decimals); 
         }
@@ -14,7 +14,7 @@ class number {
 
     public static function max($array = false, $decimals = 3) {
 
-        if($array && is_array($array)) {
+        if($array && validate::isArray($array)) {
 
             return self::round(max($array), $decimals);
         }
@@ -24,7 +24,7 @@ class number {
 
     public static function min($array = false, $decimals = 3) {
 
-        if($array && is_array($array)) {
+        if($array && validate::isArray($array)) {
 
             return self::round(min($array), $decimals);
         }
@@ -78,7 +78,7 @@ class number {
 
     public static function total($array = false) {
 
-        if($array && is_array($array)) {
+        if($array && validate::isArray($array)) {
 
             return array_sum($array);
         }
