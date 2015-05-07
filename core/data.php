@@ -2,6 +2,19 @@
 
 class data {
 
+    public static function count($data = false) {
+
+        if($data && validate::isArray($data)) {
+
+            return count($data);
+        } else if($data && validate::isObject($data)) {
+
+            return count(get_object_vars($data));
+        }
+
+        return 0;
+    }
+
     public static function dump($data = false) {
 
         if(isset($data)) {
@@ -23,6 +36,19 @@ class data {
             }
 
             return $_GET;
+        }
+
+        return false;
+    }
+
+    public static function keys($data = false) {
+
+        if($data && validate::isArray($data)) {
+
+            return array_keys($data);
+        } else if($data && validate::isObject($data)) {
+
+            return get_object_vars($data);
         }
 
         return false;
