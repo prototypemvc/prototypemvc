@@ -14,7 +14,7 @@ class format {
 
 	public static function arrayToString($array = false, $delimiter = ' ') {
 
-		if($array) {
+		if($array && validate::isArray($array)) {
 
 			return implode($delimiter, $array );
 		}
@@ -54,9 +54,18 @@ class format {
 
 	public static function toBool($var = false) {
 
+		return self::toBoolean($var);
+	}
+
+	public static function toBoolean($var = false) {
+
 		if($var) { 
 
-			return (bool) $var;
+			$boolean = (bool) $var;
+			if(validate::isBoolean($boolean)) {
+
+				return $boolean;
+			}
 		}
 
 		return false;
@@ -66,7 +75,11 @@ class format {
 
 		if($var && validate::isNumber($var)) {
 		
-			return (float) $var;
+			$float = (float) $var;
+			if(validate::isFloat($float)) {
+
+				return $float;
+			}
 		}
 
 		return false;
@@ -74,9 +87,18 @@ class format {
 
 	public static function toInt($var = false) {
 
+		return self::toInterger($var);
+	}
+
+	public static function toInteger($var = false) {
+
 		if($var && validate::isNumber($var)) {
 			
-			return (int) $var;
+			$integer = (int) $var;
+			if(validate::isInteger($integer)) {
+
+				return $integer;
+			}
 		}
 
 		return false;
@@ -84,12 +106,20 @@ class format {
 
 	public static function toJson($input = false) {
 
-		if($input && data::type($input)) {
+		if($input) {
 
 			switch (data::type($input)) {
 				case 'array':
-					return self::arrayToJson($input);
+					$json = self::arrayToJson($input);
 					break;
+				case 'object':
+					$json = self::objectToJson($input);
+					break;
+			}
+
+			if(validate::isJson($json)) {
+
+				return $json;
 			}
 		}
 
@@ -100,31 +130,97 @@ class format {
 
 		if($var) {
 
-			return (string) $var;
+			$string = (string) $var;
+			if(validate::isString($string)){
+
+				return $string;
+			}
 		}
 		
 		return false;
 	}
 
 
-	/*public static function objectToArray($object) {
+	public static function objectToArray($object) {
 
-		//...
+		if($object && validate::isObject($object)) {
+
+			return (array) $object;
+		}
+
+		return false;
 	}
 
-	public static function arrayToObject($array) {
+	public static function arrayToObject($array = false) {
 
-		//...
+		if($array && validate::isArray($array)) {
+
+			$object = new stdClass();
+
+			foreach ($array as $key => $value) {
+
+			    $object->$key = $value;
+			}
+
+			return $object;
+		}
+
+		return false;
 	}
 
-	public static function toObject($input) {
+	public static function objectToJson($object = false) {
 
-		//...
+		if($object && validate::isObject($object)) {
+
+			$array = self::objectToArray($object);
+			return self::arrayToJson($array);
+		}
+
+		return false;
 	}
 
-	public static function toArray($input) {
+	public static function toObject($input = false) {
 
-		//...
-	}*/	
+		if($input) {
+
+			switch (data::type($input)) {
+				case 'array':
+					$object = self::arrayToObject($input);
+					break;
+				case 'object':
+					$object = $input;
+					break;
+			}
+
+			if(validate::isObject($object)) {
+
+				return $object;
+			}
+		}
+
+		return false;
+	}
+
+	public static function toArray($input = false) {
+
+		if($input) {
+
+			switch (data::type($input)) {
+				case 'array':
+					$array = $input;
+					break;
+				case 'object':
+					$array = self::arrayToObject($input);
+					break;
+			}
+
+			if(validate::isObject($object)) {
+
+				return $object;
+			}
+		}
+
+		return false;
+	}
 	
 }
