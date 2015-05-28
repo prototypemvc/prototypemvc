@@ -2,9 +2,14 @@
 
 class format {
 
-	public static function arrayToJson($array = false) {
+	public static function arrayToJson($array = false, $pretty = false) {
 
 		if($array && validate::isArray($array)) {
+
+			if($pretty === true) {
+
+				return json_encode($array, JSON_PRETTY_PRINT);
+			}
 
 			return json_encode($array);
 		}
@@ -36,7 +41,8 @@ class format {
 
 		if($json && validate::isJson($json)) { 
 		
-			return json_decode($json);
+			$object = json_decode($json);
+			return self::objectToArray($object);
 		}
 
 		return false;
@@ -104,16 +110,19 @@ class format {
 		return false;
 	}
 
-	public static function toJson($input = false) {
+	public static function toJson($input = false, $pretty = false) {
 
 		if($input) {
 
 			switch (data::type($input)) {
 				case 'array':
-					$json = self::arrayToJson($input);
+					$json = self::arrayToJson($input, $pretty);
 					break;
 				case 'object':
-					$json = self::objectToJson($input);
+					$json = self::objectToJson($input, $pretty);
+					break;
+				default: 
+					$json = false;
 					break;
 			}
 
@@ -168,12 +177,12 @@ class format {
 		return false;
 	}
 
-	public static function objectToJson($object = false) {
+	public static function objectToJson($object = false, $pretty = false) {
 
 		if($object && validate::isObject($object)) {
 
 			$array = self::objectToArray($object);
-			return self::arrayToJson($array);
+			return self::arrayToJson($array, $pretty);
 		}
 
 		return false;
@@ -214,9 +223,9 @@ class format {
 					break;
 			}
 
-			if(validate::isObject($object)) {
+			if(validate::isObject($input)) {
 
-				return $object;
+				return $input;
 			}
 		}
 
