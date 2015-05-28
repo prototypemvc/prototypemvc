@@ -2,46 +2,75 @@
 
 class config {
 
-	private static $config = array(
-		
-		'root_dir' => '',
-		'core' => array(
-			'title' => 'my prototype project',
-		),
-		'database' => array(
-			'example1' => array(
-				'driver' => 'mysql',
-				'name' => 'example1',
-				'user' => '',
-				'password' => '',
-				'host' => ''
-			),
-		),
-		'meta' => array(
-			'charset' => 'UTF-8',
-			'language' => 'nl',
-		),
-	);
+	public function get() {
 
-	public static function get($item = false) {
+		$keys = func_get_args();
+		$configFile = file::get('../config/config.json');
+		$value = false;
 
-		if($item && !empty(self::$config[$item])) {
+		if(!empty($configFile) && !empty($keys)) {
 
-			return self::$config[$item];
-		} else if(!empty(self::$config)) {
+			$value = format::jsonToArray($configFile);
 
-			return self::$config;
+			foreach($keys as $number => $name) {
+
+				if(is_object($value)) {
+
+					$value = format::objectToArray($value);
+				}
+
+				if($number == 0 && isset($value[$name])) {
+
+					$value = $value[$keys[0]];
+				} else if($number != 0 && isset($value[$name])) {
+
+					$value = $value[$name];
+				}
+			}
+
+			return $value;
+		} else if(!empty($configFile)) {
+
+			$config = format::jsonToArray($configFile);
+			return $config;
 		}
 
 		return false;
 	}
 
-	public static function set($item = false, $value = false) {
+	public static function set() {
 
-		if($item & $value) {
+		$keys = func_get_args();
+		$configFile = file::get('../config/config.json');
 
-			self::$config[$item] = $value;
-			return true;
+		if(!empty($keys) && !empty($configFile)) {
+
+			$config = format::jsonToArray($configFile);
+
+			$c =& $config;
+			foreach($keys as $key => $value) {
+
+				if($key == (data::count($keys)-1)) {
+
+					$c = $keys[data::count($keys)-1];
+				} else {
+
+					if(!isset($c[$value])) {
+						$c[$value] = array();
+					} 
+					if(isset($c[$value]) && is_object($c[$value])) {
+						$c[$value] = format::objectToArray($c[$value]);
+					}
+					$c =& $c[$value];
+				}
+			}
+
+			$configJson = format::toJson($config, true);
+			
+			if(file::write('../config/config.json', $configJson)) {
+
+				return true;
+			} 
 		}
 
 		return false;

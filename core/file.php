@@ -35,7 +35,7 @@ class file {
 			return file_get_contents($file);
 		}
 
-		return $file;
+		return false;
 	}
 
 	public static function isFile($file = false) {
@@ -43,6 +43,22 @@ class file {
 		if($file && is_file($file)) {
 
 			return true;
+		}
+
+		return false;
+	}
+
+	public function write($file = false, $content = false) {
+
+		if($file && $content) {
+
+			if(self::clear($file)) {
+
+				if(file_put_contents($file, $content)) {
+
+					return true;
+				}
+			}
 		}
 
 		return false;

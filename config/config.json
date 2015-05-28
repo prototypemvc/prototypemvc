@@ -1,0 +1,19 @@
+{
+    "meta": {
+        "author": "p-mvc",
+        "charset": "UTF-8",
+        "description": "Testing one, two, one, two",
+        "language": "EN",
+        "robots": "noindex, nofollow",
+        "title": "My p-mvc project",
+        "title2": "hoi hoi"
+    },
+    "databases": false,
+    "environment": {
+        "live": "production",
+        "production": {
+            "timezone": "UTC",
+            "voorbeeld": "hallo"
+        }
+    }
+}

@@ -37,10 +37,9 @@ function autoloadsystem($class) {
 }
 spl_autoload_register("autoloadsystem");
 
-set_exception_handler('logger::exception_handler');
-set_error_handler('logger::error_handler');
+//set_exception_handler('logger::exception_handler');
+//set_error_handler('logger::error_handler');
 
-config::set('root_dir',realpath(__DIR__));
 $app = new Bootstrap();
 $app->setController('welcome');
 $app->init();
