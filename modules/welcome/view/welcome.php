@@ -4,7 +4,7 @@
 <p>This content can be changed in /modules/welcome/view/welcome.php</p>
 
 <?php
-	if(!empty($data)) {
+	if(!empty($data['var'])) {
 		echo $data['var'];
 	}
 ?>

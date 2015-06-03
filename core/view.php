@@ -2,20 +2,18 @@
 
 class view {
 
-	const path_css = '/css/';
-	const path_js = '/js/';
-	const path_modules = '/../modules/';
-
 	public static function css($file = false) {;
 
 		if($file && !text::contains($file, '.css')) {
 			$file .= '.css';
 		}
 
-		if($file && file::isFile(config::get('root_dir') . self::path_css . $file)) {
+		$path = DOC_ROOT . config::get('paths', 'css');
+
+		if($file && file::isFile($path . $file)) {
 
 			echo '<style>';
-			require config::get('root_dir') . self::path_css . $file;
+			require $path . $file;
 			echo '</style>';
 			return true;
 		}
@@ -29,13 +27,7 @@ class view {
 			$file .= '.php';
 		}
 
-		$path = config::get('root_dir');
-		if($file && text::contains($file, '/')) {
-
-			$path .= self::path_modules;
-		} else {
-			$path .= '/';
-		}
+		$path = DOC_ROOT . config::get('paths', 'modules');
 
 		if($file && file::isFile($path . $file)) {
 
@@ -52,10 +44,12 @@ class view {
 			$file .= '.js';
 		}
 
-		if($file && file::isFile(config::get('root_dir') . self::path_js . $file)) {
+		$path = DOC_ROOT . config::get('paths', 'js');
+
+		if($file && file::isFile($path . $file)) {
 
 			echo '<script>';
-			require config::get('root_dir') . self::path_js . $file;
+			require $path . $file;
 			echo '</script>';
 			return true;
 		}
