@@ -2,7 +2,7 @@
 
 class file {
 
-	public function append($file = false, $content = false) {
+	public static function append($file = false, $content = false) {
 
 		if($file && $content) {
 
@@ -25,6 +25,19 @@ class file {
 			    fclose($f);
 
 			    return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static function create($file = false) {
+
+		if($file) {
+
+			if(fopen($file, 'w')) {
+
+				return true;
 			}
 		}
 
@@ -61,11 +74,11 @@ class file {
 		return false;
 	}
 
-	public function write($file = false, $content = false) {
+	public static function remove($file = false) {
 
-		if($file && $content) {
+		if($file) {
 
-			if(file_put_contents($file, $content)) {
+			if(unlink($file)) {
 
 				return true;
 			}
@@ -90,6 +103,19 @@ class file {
 				case 'mb':
 					return number::round(($filesize / 1048576),2);
 					break;
+			}
+		}
+
+		return false;
+	}
+
+	public function write($file = false, $content = false) {
+
+		if($file && $content) {
+
+			if(file_put_contents($file, $content)) {
+
+				return true;
 			}
 		}
 
