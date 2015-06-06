@@ -5,12 +5,10 @@ class config {
 	public function get() {
 
 		$keys = func_get_args();
-		$configFile = file::get('../config/config.json');
-		$value = false;
+		$config = self::getConfig();
+		$value = $config;
 
-		if(!empty($configFile) && !empty($keys)) {
-
-			$value = format::jsonToArray($configFile);
+		if(!empty($config) && !empty($keys)) {
 
 			foreach($keys as $number => $name) {
 
@@ -29,9 +27,8 @@ class config {
 			}
 
 			return $value;
-		} else if(!empty($configFile)) {
+		} else if(!empty($config)) {
 
-			$config = format::jsonToArray($configFile);
 			return $config;
 		}
 
@@ -41,11 +38,9 @@ class config {
 	public static function set() {
 
 		$keys = func_get_args();
-		$configFile = file::get('../config/config.json');
+		$config = self::getConfig();
 
-		if(!empty($keys) && !empty($configFile)) {
-
-			$config = format::jsonToArray($configFile);
+		if(!empty($keys) && !empty($config)) {
 
 			$c =& $config;
 			foreach($keys as $key => $value) {
@@ -67,13 +62,40 @@ class config {
 
 			$configJson = format::toJson($config, true);
 			
-			if(file::write('../config/config.json', $configJson)) {
+			if(file::write('../config/custom.config.json', $configJson)) {
 
 				return true;
 			} 
 		}
 
 		return false;
+	}
+
+	public function getConfig() {
+
+		$default = format::jsonToArray( file::get('../config/default.config.json') );
+		$custom = format::jsonToArray( file::get('../config/custom.config.json') );
+
+		if($default && $custom) {
+
+			return self::merge($default, $custom);	
+		} else if($default) {
+
+			return $default;
+		}
+
+		return false;
+	}
+
+	/* Thanks to Wojtazzz on stackoverflow, http://stackoverflow.com/questions/20550442/merging-arrays-and-overwriting-value-when-keys-are-equal */
+	private function merge($array1, $array2) {
+
+		foreach (array_keys($array2) as $key) {
+		    if (isset($array1[$key])) {
+		    	unset($array1[$key]);
+			}
+		}
+		return $array1 + $array2;
 	}
 
 }

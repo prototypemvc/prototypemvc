@@ -61,21 +61,8 @@ class welcome extends controller{
 
 	public function config() {
 
-		echo '<hr><p>before set: </p>';
-
-		data::pre( config::get() );
-
-		config::set('environment', 'live', 'production');
-		$production = array(
-			'timezone' => 'UTC',
-			'voorbeeld' => 'hallo'
-		);
-		config::set('environment', 'production', $production);
-		config::set('meta', 'title2', 'hoi hoi');
-
-		echo '<hr><p>after set: </p>';
-
-		data::pre( config::get() );
+		$config = config::getConfig();
+		data::pre($config);
 	}
 	
 }

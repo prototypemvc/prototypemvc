@@ -2,15 +2,15 @@
 
 class model {
 
-	const path_modules = '../modules/';
-
 	public static function load($model = false) {
 
-		if($model && file::isFile(self::path_modules . $model . '.php')) {
+		$path = DOC_ROOT . config::get('paths', 'modules');
+
+		if($model && file::isFile($path . $model . '.php')) {
 
 			$modelName = end(explode('/',$model));
 
-			require self::path_modules . $model . '.php';
+			require $path . $model . '.php';
 			
 			return new $modelName();
 		}

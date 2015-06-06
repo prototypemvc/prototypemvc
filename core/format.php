@@ -154,10 +154,24 @@ class format {
 
 		if($object && validate::isObject($object)) {
 
-			return (array) $object;
+			//return (array) $object;
+			return self::objectToArrayRecursive($object);
 		}
 
 		return false;
+	}
+
+	// source: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
+	public static function objectToArrayRecursive($obj) {
+	    if(is_object($obj)) $obj = (array) $obj;
+	    if(is_array($obj)) {
+	        $new = array();
+	        foreach($obj as $key => $val) {
+	            $new[$key] = self::objectToArrayRecursive($val);
+	        }
+	    }
+	    else $new = $obj;
+	    return $new;       
 	}
 
 	public static function arrayToObject($array = false) {
