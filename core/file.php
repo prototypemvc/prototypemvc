@@ -2,6 +2,19 @@
 
 class file {
 
+	public function append($file = false, $content = false) {
+
+		if($file && $content) {
+
+			if(file_put_contents($file, $content, FILE_APPEND)) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public static function clear($file = false) {
 
 		if($file && self::isFile($file)) {
@@ -52,12 +65,9 @@ class file {
 
 		if($file && $content) {
 
-			if(self::clear($file)) {
+			if(file_put_contents($file, $content)) {
 
-				if(file_put_contents($file, $content)) {
-
-					return true;
-				}
+				return true;
 			}
 		}
 
