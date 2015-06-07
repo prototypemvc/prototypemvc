@@ -1,6 +1,6 @@
 <?php
 
-class Session {
+class session {
 
 	private static $_sessionStarted = false;
 
@@ -8,10 +8,25 @@ class Session {
 
 		if(self::$_sessionStarted == false) {
 
-			session_start();
+			self::start();
 			self::$_sessionStarted = true;
 		}
 
+		// thanks Jon, http://stackoverflow.com/questions/8311320/how-to-change-the-session-timeout-in-php
+		$now = time();
+		if(isset($_SESSION['expiration_time']) && $now > $_SESSION['expiration_time']) {
+
+		    self::destroy();
+		    self::start();
+		}
+
+		$timeout = 3600;
+		if(!empty(config::get('session', 'timeout'))) {
+
+			$timeout = config::get('session', 'timeout');
+		}
+
+		$_SESSION['expiration_time'] = $now + $timeout;
 	}
 
 	public static function get() {
@@ -80,7 +95,11 @@ class Session {
 			session_destroy();
 			return true;
 		}
+	}
 
+	public static function start() {
+
+		session_start();
 	}
 
 }
