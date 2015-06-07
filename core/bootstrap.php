@@ -8,7 +8,7 @@ class Bootstrap {
 
     public function __construct(){
         //start the session class
-        Session::init();
+        session::init();
 
         //sets the protected url
         $this->_getUrl();
