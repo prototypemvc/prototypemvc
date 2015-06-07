@@ -6,46 +6,79 @@ class Session {
 
 	public static function init(){
 
-		if(self::$_sessionStarted == false){
+		if(self::$_sessionStarted == false) {
+
 			session_start();
 			self::$_sessionStarted = true;
 		}
 
 	}
 
-	public static function set($key,$value){
-		$_SESSION[SESSION_PREFIX.$key] = $value;
-	}
+	public static function get() {
 
-	public static function get($key,$secondkey = false){
+		$keys = func_get_args();
+		$value = $_SESSION;
 
-		if($secondkey == true){
+		if(!empty($value) && !empty($keys)) {
 
-			if(isset($_SESSION[SESSION_PREFIX.$key][$secondkey])){
-				return $_SESSION[SESSION_PREFIX.$key][$secondkey];
+			foreach($keys as $number => $name) {
+
+				if($number == 0 && isset($value[$name])) {
+
+					$value = $value[$keys[0]];
+				} else if($number != 0 && isset($value[$name])) {
+
+					$value = $value[$name];
+				}
 			}
 
-		} else {
+			return $value;
+		} else if(!empty($value)) {
 
-			if(isset($_SESSION[SESSION_PREFIX.$key])){
-				return $_SESSION[SESSION_PREFIX.$key];
-			}
-
+			return $value;
 		}
 
 		return false;
-
 	}
 
-	public static function display(){
-		return $_SESSION;
+	public static function set($key,$value){
+		$keys = func_get_args();
+		$session = $_SESSION;
+
+		if(!empty($keys) && !empty($session)) {
+
+			$s =& $session;
+			foreach($keys as $key => $value) {
+
+				if($key == (data::count($keys)-1)) {
+
+					$s = $keys[data::count($keys)-1];
+				} else {
+
+					if(!isset($s[$value])) {
+						$s[$value] = array();
+					} 
+					if(isset($s[$value]) && is_array($s[$value])) {
+						$s[$value] = $s[$value];
+					}
+					$s =& $s[$value];
+				}
+			}
+
+			$_SESSION = $session;
+			return true;
+		}
+
+		return false;
 	}
 
 	public static function destroy(){
 
-		if(self::$_sessionStarted == true){
+		if(self::$_sessionStarted == true) {
+
 			session_unset();
 			session_destroy();
+			return true;
 		}
 
 	}
