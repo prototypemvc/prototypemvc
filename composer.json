@@ -4,8 +4,8 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "pmvc\\core\\": "core/",
-            "pmvc\\helpers\\": "helpers/"
+            "Pmvc\\Core\\": "Core/",
+            "Pmvc\\Helpers\\": "Helpers/"
         }
     }
 }
