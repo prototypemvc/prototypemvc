@@ -1,8 +1,10 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-class file {
+use Pmvc\Core\Number;
+
+class File {
 
     public static function append($file = false, $content = false) {
 
@@ -100,10 +102,10 @@ class file {
                     return $filesize;
                     break;
                 case 'kb':
-                    return number::round(($filesize / 1024), 2);
+                    return Number::round(($filesize / 1024), 2);
                     break;
                 case 'mb':
-                    return number::round(($filesize / 1048576), 2);
+                    return Number::round(($filesize / 1048576), 2);
                     break;
             }
         }

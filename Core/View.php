@@ -1,23 +1,23 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\text;
-use \pmvc\core\config;
-use \pmvc\core\file;
-use \pmvc\core\format;
+use \Pmvc\Core\Text;
+use \Pmvc\Core\Config;
+use \Pmvc\Core\File;
+use \Pmvc\Core\Format;
 
 class view {
 
     public static function css($file = false) {
 
-        if ($file && !text::contains($file, '.css')) {
+        if ($file && !Text::contains($file, '.css')) {
             $file .= '.css';
         }
 
-        $path = DOC_ROOT . config::get('paths', 'css');
+        $path = DOC_ROOT . Config::get('paths', 'css');
 
-        if ($file && file::isFile($path . $file)) {
+        if ($file && File::isFile($path . $file)) {
 
             echo '<style>';
             require $path . $file;
@@ -30,13 +30,13 @@ class view {
 
     public static function load($file = false, $data = false) {
 
-        if ($file && !text::contains($file, '.php')) {
+        if ($file && !Text::contains($file, '.php')) {
             $file .= '.php';
         }
 
-        $path = DOC_ROOT . config::get('paths', 'modules');
+        $path = DOC_ROOT . Config::get('paths', 'modules');
 
-        if ($file && file::isFile($path . $file)) {
+        if ($file && File::isFile($path . $file)) {
 
             require $path . $file;
             return true;
@@ -47,13 +47,13 @@ class view {
 
     public static function js($file = false) {
 
-        if ($file && !text::contains($file, '.js')) {
+        if ($file && !Text::contains($file, '.js')) {
             $file .= '.js';
         }
 
-        $path = DOC_ROOT . config::get('paths', 'js');
+        $path = DOC_ROOT . Config::get('paths', 'js');
 
-        if ($file && file::isFile($path . $file)) {
+        if ($file && File::isFile($path . $file)) {
 
             echo '<script>';
             require $path . $file;
@@ -68,7 +68,7 @@ class view {
 
         if ($input) {
 
-            echo format::toJson($input);
+            echo Format::toJson($input);
             if ($exit) {
 
                 exit();

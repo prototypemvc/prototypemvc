@@ -1,8 +1,8 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\session;
+use \Pmvc\Core\Session;
 
 class Bootstrap {
 
@@ -12,7 +12,7 @@ class Bootstrap {
 
     public function __construct() {
         //start the session class
-        session::init();
+        Session::init();
 
         //sets the protected url
         $this->_getUrl();

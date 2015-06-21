@@ -1,12 +1,12 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\format;
-use \pmvc\core\data;
-use \pmvc\core\file;
+use \Pmvc\Core\Format;
+use \Pmvc\Core\Data;
+use \Pmvc\Core\File;
 
-class config {
+class Config {
 
     public function get() {
 
@@ -20,7 +20,7 @@ class config {
 
                 if (is_object($value)) {
 
-                    $value = format::objectToArray($value);
+                    $value = Format::objectToArray($value);
                 }
 
                 if ($number == 0 && isset($value[$name])) {
@@ -51,24 +51,24 @@ class config {
             $c = & $config;
             foreach ($keys as $key => $value) {
 
-                if ($key == (data::count($keys) - 1)) {
+                if ($key == (Data::count($keys) - 1)) {
 
-                    $c = $keys[data::count($keys) - 1];
+                    $c = $keys[Data::count($keys) - 1];
                 } else {
 
                     if (!isset($c[$value])) {
                         $c[$value] = array();
                     }
                     if (isset($c[$value]) && is_object($c[$value])) {
-                        $c[$value] = format::objectToArray($c[$value]);
+                        $c[$value] = Format::objectToArray($c[$value]);
                     }
                     $c = & $c[$value];
                 }
             }
 
-            $configJson = format::toJson($config, true);
+            $configJson = Format::toJson($config, true);
 
-            if (file::write('../config/custom.config.json', $configJson)) {
+            if (File::write('../config/custom.config.json', $configJson)) {
 
                 return true;
             }
@@ -79,8 +79,8 @@ class config {
 
     public function getConfig() {
 
-        $default = format::jsonToArray(file::get('../config/default.config.json'));
-        $custom = format::jsonToArray(file::get('../config/custom.config.json'));
+        $default = Format::jsonToArray(File::get('../config/default.config.json'));
+        $custom = Format::jsonToArray(File::get('../config/custom.config.json'));
 
         if ($default && $custom) {
 

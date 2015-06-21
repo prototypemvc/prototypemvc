@@ -1,8 +1,8 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\config;
+use \Pmvc\Core\Config;
 
 class Logger {
 
@@ -31,7 +31,7 @@ class Logger {
 
     public static function newMessage(Exception $exception, $print_error = false, $clear = false, $error_file = 'errorlog.html') {
 
-        $error_file = realpath(config::get('root_dir') . '/../log') . '/log.html';
+        $error_file = realpath(Config::get('root_dir') . '/../log') . '/log.html';
 
         $message = $exception->getMessage();
         $code = $exception->getCode();
@@ -70,7 +70,7 @@ class Logger {
 
     public static function errorMessage($error, $print_error = false, $error_file = 'errorlog.html') {
 
-        $error_file = realpath(config::get('root_dir') . '/../log') . '/log.html';
+        $error_file = realpath(Config::get('root_dir') . '/../log') . '/log.html';
 
         $date = date('M d, Y G:iA');
         $log_message = "<p>Error on $date - $error</p>";

@@ -1,8 +1,9 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
+use Pmvc\Core\Bootstrap;
 
-class controller extends Bootstrap {
+class Controller extends Bootstrap {
 
     public function __construct() {
         parent::__construct();

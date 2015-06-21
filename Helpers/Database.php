@@ -1,6 +1,6 @@
 <?php
 
-namespace \pmvc\helpers;
+namespace Pmvc\Helpers;
 use \PDO;
 class Database extends PDO{
 

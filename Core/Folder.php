@@ -1,8 +1,8 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-class folder {
+class Folder {
 
     public static function get($path = false) {
 

@@ -1,17 +1,17 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\validate;
+use \Pmvc\Core\Validate;
 
-class data {
+class Data {
 
     public static function count($data = false) {
 
-        if ($data && validate::isArray($data)) {
+        if ($data && Validate::isArray($data)) {
 
             return count($data);
-        } else if ($data && validate::isObject($data)) {
+        } else if ($data && Validate::isObject($data)) {
 
             return count(get_object_vars($data));
         }
@@ -47,10 +47,10 @@ class data {
 
     public static function keys($data = false) {
 
-        if ($data && validate::isArray($data)) {
+        if ($data && Validate::isArray($data)) {
 
             return array_keys($data);
-        } else if ($data && validate::isObject($data)) {
+        } else if ($data && Validate::isObject($data)) {
 
             return get_object_vars($data);
         }
@@ -132,7 +132,7 @@ class data {
 
             if ($dataType === 'string') {
 
-                if (validate::isJson($data)) {
+                if (Validate::isJson($data)) {
                     $dataType = 'json';
                 }
             }

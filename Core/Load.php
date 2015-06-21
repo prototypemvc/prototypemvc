@@ -1,36 +1,36 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\view;
-use \pmvc\core\file;
-use \pmvc\core\model;
+use \Pmvc\Core\View;
+use \Pmvc\Core\File;
+use \Pmvc\Core\Model;
 
-class load {
+class Load {
 
     public static function css($file = false) {
 
-        return view::css($file);
+        return View::css($file);
     }
 
     public static function file($file = false) {
 
-        return file::get($file);
+        return File::get($file);
     }
 
     public static function js($file = false) {
 
-        return view::js($file);
+        return View::js($file);
     }
 
     public static function model($file = false) {
 
-        return model::load($file);
+        return Model::load($file);
     }
 
     public static function view($file = false) {
 
-        return view::load($file);
+        return View::load($file);
     }
 
 }

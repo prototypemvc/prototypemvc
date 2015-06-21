@@ -1,10 +1,11 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\view;
+use Pmvc\Core\Controller;
+use \Pmvc\Core\view;
 
-class error extends Controller {
+class Error extends Controller {
 
     private $_error = null;
 
@@ -18,7 +19,7 @@ class error extends Controller {
         $data['title'] = '404';
         $data['error'] = $this->_error;
 
-        view::load('error/view/404', $data);
+        View::load('error/view/404', $data);
     }
 
 }

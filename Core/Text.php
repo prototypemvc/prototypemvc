@@ -1,8 +1,8 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-class text {
+class Text {
 
     public static function contains($string, $substring = false) {
 

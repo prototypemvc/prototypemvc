@@ -1,17 +1,17 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\config;
-use \pmvc\core\file;
+use \Pmvc\Core\Config;
+use \Pmvc\Core\File;
 
-class model {
+class Model {
 
     public static function load($model = false) {
 
-        $path = DOC_ROOT . config::get('paths', 'modules');
+        $path = DOC_ROOT . Config::get('paths', 'modules');
 
-        if ($model && file::isFile($path . $model . '.php')) {
+        if ($model && File::isFile($path . $model . '.php')) {
 
             $modelName = end(explode('/', $model));
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\data;
+use \Pmvc\Core\Data;
 
 class validate {
 
     public static function isArray($array = false) {
 
-        if ($array && data::type($array) === 'array') {
+        if ($array && Data::type($array) === 'array') {
 
             return true;
         }
@@ -146,7 +146,7 @@ class validate {
 
     public static function isType($input = false, $type = false) {
 
-        if ($input && $type && data::type($input) == $type) {
+        if ($input && $type && Data::type($input) == $type) {
 
             return true;
         }

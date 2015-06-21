@@ -1,15 +1,15 @@
 <?php
 
-namespace \pmvc\core;
+namespace Pmvc\Core;
 
-use \pmvc\core\data;
-use \pmvc\core\validate;
+use \Pmvc\Core\Data;
+use \Pmvc\Core\Validate;
 
-class format {
+class Format {
 
     public static function arrayToJson($array = false, $pretty = false) {
 
-        if ($array && validate::isArray($array)) {
+        if ($array && Validate::isArray($array)) {
 
             if ($pretty === true) {
 
@@ -24,7 +24,7 @@ class format {
 
     public static function arrayToString($array = false, $delimiter = ' ') {
 
-        if ($array && validate::isArray($array)) {
+        if ($array && Validate::isArray($array)) {
 
             return implode($delimiter, $array);
         }
@@ -44,7 +44,7 @@ class format {
 
     public static function jsonToArray($json = false) {
 
-        if ($json && validate::isJson($json)) {
+        if ($json && Validate::isJson($json)) {
 
             $object = json_decode($json);
             return self::objectToArray($object);
@@ -55,7 +55,7 @@ class format {
 
     public static function stringToArray($string = false, $delimiter = ' ') {
 
-        if ($string && validate::isString($string)) {
+        if ($string && Validate::isString($string)) {
 
             return explode($delimiter, $string);
         }
@@ -73,7 +73,7 @@ class format {
         if ($var) {
 
             $boolean = (bool) $var;
-            if (validate::isBoolean($boolean)) {
+            if (Validate::isBoolean($boolean)) {
 
                 return $boolean;
             }
@@ -84,10 +84,10 @@ class format {
 
     public static function toFloat($var = false) {
 
-        if ($var && validate::isNumber($var)) {
+        if ($var && Validate::isNumber($var)) {
 
             $float = (float) $var;
-            if (validate::isFloat($float)) {
+            if (Validate::isFloat($float)) {
 
                 return $float;
             }
@@ -103,10 +103,10 @@ class format {
 
     public static function toInteger($var = false) {
 
-        if ($var && validate::isNumber($var)) {
+        if ($var && Validate::isNumber($var)) {
 
             $integer = (int) $var;
-            if (validate::isInteger($integer)) {
+            if (Validate::isInteger($integer)) {
 
                 return $integer;
             }
@@ -119,7 +119,7 @@ class format {
 
         if ($input) {
 
-            switch (data::type($input)) {
+            switch (Data::type($input)) {
                 case 'array':
                     $json = self::arrayToJson($input, $pretty);
                     break;
@@ -131,7 +131,7 @@ class format {
                     break;
             }
 
-            if (validate::isJson($json)) {
+            if (Validate::isJson($json)) {
 
                 return $json;
             }
@@ -145,7 +145,7 @@ class format {
         if ($var) {
 
             $string = (string) $var;
-            if (validate::isString($string)) {
+            if (Validate::isString($string)) {
 
                 return $string;
             }
@@ -156,7 +156,7 @@ class format {
 
     public static function objectToArray($object) {
 
-        if ($object && validate::isObject($object)) {
+        if ($object && Validate::isObject($object)) {
 
             //return (array) $object;
             return self::objectToArrayRecursive($object);
@@ -181,7 +181,7 @@ class format {
 
     public static function arrayToObject($array = false) {
 
-        if ($array && validate::isArray($array)) {
+        if ($array && Validate::isArray($array)) {
 
             $object = new stdClass();
 
@@ -198,7 +198,7 @@ class format {
 
     public static function objectToJson($object = false, $pretty = false) {
 
-        if ($object && validate::isObject($object)) {
+        if ($object && Validate::isObject($object)) {
 
             $array = self::objectToArray($object);
             return self::arrayToJson($array, $pretty);
@@ -211,7 +211,7 @@ class format {
 
         if ($input) {
 
-            switch (data::type($input)) {
+            switch (Data::type($input)) {
                 case 'array':
                     $object = self::arrayToObject($input);
                     break;
@@ -220,7 +220,7 @@ class format {
                     break;
             }
 
-            if (validate::isObject($object)) {
+            if (Validate::isObject($object)) {
 
                 return $object;
             }
@@ -233,7 +233,7 @@ class format {
 
         if ($input) {
 
-            switch (data::type($input)) {
+            switch (Data::type($input)) {
                 case 'array':
                     $array = $input;
                     break;
@@ -242,7 +242,7 @@ class format {
                     break;
             }
 
-            if (validate::isObject($input)) {
+            if (Validate::isObject($input)) {
 
                 return $input;
             }
