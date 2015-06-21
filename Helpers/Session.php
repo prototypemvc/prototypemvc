@@ -2,6 +2,9 @@
 
 namespace Pmvc\Helpers;
 
+use Pmvc\Core\Config;
+use Pmvc\Core\Data;
+
 class Session {
 
     private static $_sessionStarted = false;
@@ -23,9 +26,9 @@ class Session {
         }
 
         $timeout = 3600;
-        if (!empty(config::get('session', 'timeout'))) {
+        if (!empty(Config::get('session', 'timeout'))) {
 
-            $timeout = config::get('session', 'timeout');
+            $timeout = Config::get('session', 'timeout');
         }
 
         $_SESSION['expiration_time'] = $now + $timeout;
@@ -67,9 +70,9 @@ class Session {
             $s = & $session;
             foreach ($keys as $key => $value) {
 
-                if ($key == (data::count($keys) - 1)) {
+                if ($key == (Data::count($keys) - 1)) {
 
-                    $s = $keys[data::count($keys) - 1];
+                    $s = $keys[Data::count($keys) - 1];
                 } else {
 
                     if (!isset($s[$value])) {
