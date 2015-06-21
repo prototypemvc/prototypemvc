@@ -2,7 +2,7 @@
 
 namespace Pmvc\Core;
 
-use \Pmvc\Core\Session;
+use \Pmvc\Helpers\Session;
 
 class Bootstrap {
 
