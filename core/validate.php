@@ -1,14 +1,18 @@
-<?php 
+<?php
+
+namespace \pmvc\core;
+
+use \pmvc\core\data;
 
 class validate {
 
     public static function isArray($array = false) {
 
-        if($array && data::type($array) === 'array') {
+        if ($array && data::type($array) === 'array') {
 
             return true;
         }
-        
+
         return false;
     }
 
@@ -39,17 +43,17 @@ class validate {
 
     public static function isEmail($input = false) {
 
-    	if ($input && !filter_var($input, FILTER_VALIDATE_EMAIL) === false) {
+        if ($input && !filter_var($input, FILTER_VALIDATE_EMAIL) === false) {
 
-    		return true;
-    	}
+            return true;
+        }
 
-    	return false;
+        return false;
     }
 
     public static function isFloat($input = false) {
 
-        if($input && is_float($input)) {
+        if ($input && is_float($input)) {
 
             return true;
         }
@@ -64,7 +68,7 @@ class validate {
 
     public static function isInteger($input = false) {
 
-        if($input && is_int($input)) {
+        if ($input && is_int($input)) {
 
             return true;
         }
@@ -74,33 +78,33 @@ class validate {
 
     public static function isIp($input = false) {
 
-    	if ($input && !filter_var($input, FILTER_VALIDATE_IP) === false) {
+        if ($input && !filter_var($input, FILTER_VALIDATE_IP) === false) {
 
-    		return true;
-    	}
+            return true;
+        }
 
-    	return false;
+        return false;
     }
 
     public static function isJson($string = false) {
 
-        if ($string && is_object(json_decode($string))) { 
+        if ($string && is_object(json_decode($string))) {
 
             return true;
         }
-        
+
         return false;
     }
 
     public static function isLength($input = false, $min = 0, $max = false) {
 
         if ($input && strlen($input) >= $min) {
-            
+
             if (!$max || strlen($input) <= $max) {
 
                 return true;
             }
-        } 
+        }
 
         return false;
     }
@@ -112,7 +116,7 @@ class validate {
 
     public static function isNumeric($input = false) {
 
-        if($input && is_numeric($input)) {
+        if ($input && is_numeric($input)) {
 
             return true;
         }
@@ -122,7 +126,7 @@ class validate {
 
     public static function isObject($input = false) {
 
-        if($input && is_object($input)) {
+        if ($input && is_object($input)) {
 
             return true;
         }
@@ -132,7 +136,7 @@ class validate {
 
     public static function isString($input = false) {
 
-        if($input && is_string($input)) {
+        if ($input && is_string($input)) {
 
             return true;
         }
@@ -142,22 +146,22 @@ class validate {
 
     public static function isType($input = false, $type = false) {
 
-        if($input && $type && data::type($input) == $type) {
+        if ($input && $type && data::type($input) == $type) {
 
             return true;
         }
-        
+
         return false;
     }
 
     public static function isUrl($input) {
 
-    	if ($input && !filter_var($input, FILTER_VALIDATE_URL) === false) {
+        if ($input && !filter_var($input, FILTER_VALIDATE_URL) === false) {
 
-    		return true;
-    	}
+            return true;
+        }
 
-    	return false;
+        return false;
     }
-	
+
 }

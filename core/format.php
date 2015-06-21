@@ -1,249 +1,254 @@
-<?php 
+<?php
+
+namespace \pmvc\core;
+
+use \pmvc\core\data;
+use \pmvc\core\validate;
 
 class format {
 
-	public static function arrayToJson($array = false, $pretty = false) {
+    public static function arrayToJson($array = false, $pretty = false) {
 
-		if($array && validate::isArray($array)) {
+        if ($array && validate::isArray($array)) {
 
-			if($pretty === true) {
+            if ($pretty === true) {
 
-				return json_encode($array, JSON_PRETTY_PRINT);
-			}
+                return json_encode($array, JSON_PRETTY_PRINT);
+            }
 
-			return json_encode($array);
-		}
+            return json_encode($array);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public static function arrayToString($array = false, $delimiter = ' ') {
+    public static function arrayToString($array = false, $delimiter = ' ') {
 
-		if($array && validate::isArray($array)) {
+        if ($array && validate::isArray($array)) {
 
-			return implode($delimiter, $array );
-		}
+            return implode($delimiter, $array);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public static function csvToArray($csv = false) {
+    public static function csvToArray($csv = false) {
 
-		if($csv) { 
+        if ($csv) {
 
-			return str_getcsv($csv);
-		}
+            return str_getcsv($csv);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public static function jsonToArray($json = false) {
+    public static function jsonToArray($json = false) {
 
-		if($json && validate::isJson($json)) { 
-		
-			$object = json_decode($json);
-			return self::objectToArray($object);
-		}
+        if ($json && validate::isJson($json)) {
 
-		return false;
-	}
+            $object = json_decode($json);
+            return self::objectToArray($object);
+        }
 
-	public static function stringToArray($string = false, $delimiter = ' ') {
+        return false;
+    }
 
-		if($string && validate::isString($string)) {
+    public static function stringToArray($string = false, $delimiter = ' ') {
 
-			return explode($delimiter, $string);
-		}
+        if ($string && validate::isString($string)) {
 
-		return false;
-	}
+            return explode($delimiter, $string);
+        }
 
-	public static function toBool($var = false) {
+        return false;
+    }
 
-		return self::toBoolean($var);
-	}
+    public static function toBool($var = false) {
 
-	public static function toBoolean($var = false) {
+        return self::toBoolean($var);
+    }
 
-		if($var) { 
+    public static function toBoolean($var = false) {
 
-			$boolean = (bool) $var;
-			if(validate::isBoolean($boolean)) {
+        if ($var) {
 
-				return $boolean;
-			}
-		}
+            $boolean = (bool) $var;
+            if (validate::isBoolean($boolean)) {
 
-		return false;
-	}
+                return $boolean;
+            }
+        }
 
-	public static function toFloat($var = false) {
+        return false;
+    }
 
-		if($var && validate::isNumber($var)) {
-		
-			$float = (float) $var;
-			if(validate::isFloat($float)) {
+    public static function toFloat($var = false) {
 
-				return $float;
-			}
-		}
+        if ($var && validate::isNumber($var)) {
 
-		return false;
-	}
+            $float = (float) $var;
+            if (validate::isFloat($float)) {
 
-	public static function toInt($var = false) {
+                return $float;
+            }
+        }
 
-		return self::toInterger($var);
-	}
+        return false;
+    }
 
-	public static function toInteger($var = false) {
+    public static function toInt($var = false) {
 
-		if($var && validate::isNumber($var)) {
-			
-			$integer = (int) $var;
-			if(validate::isInteger($integer)) {
+        return self::toInterger($var);
+    }
 
-				return $integer;
-			}
-		}
+    public static function toInteger($var = false) {
 
-		return false;
-	}
+        if ($var && validate::isNumber($var)) {
 
-	public static function toJson($input = false, $pretty = false) {
+            $integer = (int) $var;
+            if (validate::isInteger($integer)) {
 
-		if($input) {
+                return $integer;
+            }
+        }
 
-			switch (data::type($input)) {
-				case 'array':
-					$json = self::arrayToJson($input, $pretty);
-					break;
-				case 'object':
-					$json = self::objectToJson($input, $pretty);
-					break;
-				default: 
-					$json = false;
-					break;
-			}
+        return false;
+    }
 
-			if(validate::isJson($json)) {
+    public static function toJson($input = false, $pretty = false) {
 
-				return $json;
-			}
-		}
+        if ($input) {
 
-		return false;
-	}
+            switch (data::type($input)) {
+                case 'array':
+                    $json = self::arrayToJson($input, $pretty);
+                    break;
+                case 'object':
+                    $json = self::objectToJson($input, $pretty);
+                    break;
+                default:
+                    $json = false;
+                    break;
+            }
 
-	public static function toString($var = false) {
+            if (validate::isJson($json)) {
 
-		if($var) {
+                return $json;
+            }
+        }
 
-			$string = (string) $var;
-			if(validate::isString($string)){
+        return false;
+    }
 
-				return $string;
-			}
-		}
-		
-		return false;
-	}
+    public static function toString($var = false) {
 
+        if ($var) {
 
-	public static function objectToArray($object) {
+            $string = (string) $var;
+            if (validate::isString($string)) {
 
-		if($object && validate::isObject($object)) {
+                return $string;
+            }
+        }
 
-			//return (array) $object;
-			return self::objectToArrayRecursive($object);
-		}
+        return false;
+    }
 
-		return false;
-	}
+    public static function objectToArray($object) {
 
-	// source: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
-	public static function objectToArrayRecursive($obj) {
-	    if(is_object($obj)) $obj = (array) $obj;
-	    if(is_array($obj)) {
-	        $new = array();
-	        foreach($obj as $key => $val) {
-	            $new[$key] = self::objectToArrayRecursive($val);
-	        }
-	    }
-	    else $new = $obj;
-	    return $new;       
-	}
+        if ($object && validate::isObject($object)) {
 
-	public static function arrayToObject($array = false) {
+            //return (array) $object;
+            return self::objectToArrayRecursive($object);
+        }
 
-		if($array && validate::isArray($array)) {
+        return false;
+    }
 
-			$object = new stdClass();
+    // source: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
+    public static function objectToArrayRecursive($obj) {
+        if (is_object($obj))
+            $obj = (array) $obj;
+        if (is_array($obj)) {
+            $new = array();
+            foreach ($obj as $key => $val) {
+                $new[$key] = self::objectToArrayRecursive($val);
+            }
+        } else
+            $new = $obj;
+        return $new;
+    }
 
-			foreach ($array as $key => $value) {
+    public static function arrayToObject($array = false) {
 
-			    $object->$key = $value;
-			}
+        if ($array && validate::isArray($array)) {
 
-			return $object;
-		}
+            $object = new stdClass();
 
-		return false;
-	}
+            foreach ($array as $key => $value) {
 
-	public static function objectToJson($object = false, $pretty = false) {
+                $object->$key = $value;
+            }
 
-		if($object && validate::isObject($object)) {
+            return $object;
+        }
 
-			$array = self::objectToArray($object);
-			return self::arrayToJson($array, $pretty);
-		}
+        return false;
+    }
 
-		return false;
-	}
+    public static function objectToJson($object = false, $pretty = false) {
 
-	public static function toObject($input = false) {
+        if ($object && validate::isObject($object)) {
 
-		if($input) {
+            $array = self::objectToArray($object);
+            return self::arrayToJson($array, $pretty);
+        }
 
-			switch (data::type($input)) {
-				case 'array':
-					$object = self::arrayToObject($input);
-					break;
-				case 'object':
-					$object = $input;
-					break;
-			}
+        return false;
+    }
 
-			if(validate::isObject($object)) {
+    public static function toObject($input = false) {
 
-				return $object;
-			}
-		}
+        if ($input) {
 
-		return false;
-	}
+            switch (data::type($input)) {
+                case 'array':
+                    $object = self::arrayToObject($input);
+                    break;
+                case 'object':
+                    $object = $input;
+                    break;
+            }
 
-	public static function toArray($input = false) {
+            if (validate::isObject($object)) {
 
-		if($input) {
+                return $object;
+            }
+        }
 
-			switch (data::type($input)) {
-				case 'array':
-					$array = $input;
-					break;
-				case 'object':
-					$array = self::arrayToObject($input);
-					break;
-			}
+        return false;
+    }
 
-			if(validate::isObject($input)) {
+    public static function toArray($input = false) {
 
-				return $input;
-			}
-		}
+        if ($input) {
 
-		return false;
-	}
-	
+            switch (data::type($input)) {
+                case 'array':
+                    $array = $input;
+                    break;
+                case 'object':
+                    $array = self::arrayToObject($input);
+                    break;
+            }
+
+            if (validate::isObject($input)) {
+
+                return $input;
+            }
+        }
+
+        return false;
+    }
+
 }

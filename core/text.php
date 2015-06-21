@@ -1,10 +1,12 @@
-<?php 
+<?php
+
+namespace \pmvc\core;
 
 class text {
 
     public static function contains($string, $substring = false) {
 
-        if($substring && strpos($string, $substring) !== false) {
+        if ($substring && strpos($string, $substring) !== false) {
 
             return true;
         }
@@ -14,17 +16,17 @@ class text {
 
     public static function count($string = false, $selector = false) {
 
-        if($string) {
+        if ($string) {
 
-        	switch ($selector) {
-        		case 'words': 
-        			return str_word_count($string);
-        		default:
-        			if(self::substring($selector, 0, 1) === ':') {
-        				return substr_count($string, self::substring($selector, 1));
-        			}
-        			return self::length($string);
-        	}
+            switch ($selector) {
+                case 'words':
+                    return str_word_count($string);
+                default:
+                    if (self::substring($selector, 0, 1) === ':') {
+                        return substr_count($string, self::substring($selector, 1));
+                    }
+                    return self::length($string);
+            }
         }
 
         return false;
@@ -32,26 +34,26 @@ class text {
 
     public static function length($string = false) {
 
-        if($string) {
-    	   
-           return strlen($string);
-       }
+        if ($string) {
 
-       return false;
+            return strlen($string);
+        }
+
+        return false;
     }
 
     public static function lowercase($string = false, $selector = false) {
 
-        if($string) {
+        if ($string) {
 
-        	switch ($selector) {
-        		case 'first': 
-        			return lcfirst($string);
-        		case 'words':
-        			return lcwords($string);
-        		default:
-        			return strtolower($string);
-        	}
+            switch ($selector) {
+                case 'first':
+                    return lcfirst($string);
+                case 'words':
+                    return lcwords($string);
+                default:
+                    return strtolower($string);
+            }
         }
 
         return false;
@@ -59,7 +61,7 @@ class text {
 
     public static function replace($string = false, $find = false, $replaceWith = '') {
 
-        if($string && $find) {
+        if ($string && $find) {
 
             return str_replace($find, $replaceWith, $string);
         }
@@ -69,19 +71,19 @@ class text {
 
     public static function reverse($string = false) {
 
-        if($string) {
+        if ($string) {
 
             return strrev($string);
         }
-    	
+
 
         return false;
     }
 
     public static function shuffle($string = false) {
 
-        if($string) {
-    	
+        if ($string) {
+
             return str_shuffle($string);
         }
 
@@ -90,8 +92,8 @@ class text {
 
     public static function strip($string = false) {
 
-        if($string) {
-    	
+        if ($string) {
+
             return trim($string);
         }
 
@@ -115,7 +117,7 @@ class text {
 
         $lipsum = simplexml_load_file("http://www.lipsum.com/feed/xml?amount=$amount&what=$what&start=$startWithLoremIpsum")->lipsum;
 
-        if(!empty($lipsum)) {
+        if (!empty($lipsum)) {
 
             return $lipsum;
         }
@@ -125,14 +127,14 @@ class text {
 
     public static function substring($string = false, $firstIndex = 0, $maxStringLength = false) {
 
-        if($string) {
+        if ($string) {
 
-        	if(!$maxStringLength) {
+            if (!$maxStringLength) {
 
-        		$maxStringLength = (self::length($string) - $firstIndex);
-        	}
+                $maxStringLength = (self::length($string) - $firstIndex);
+            }
 
-        	return substr($string, $firstIndex, $maxStringLength);
+            return substr($string, $firstIndex, $maxStringLength);
         }
 
         return false;
@@ -140,19 +142,19 @@ class text {
 
     public static function uppercase($string = false, $selector = false) {
 
-        if($string) {
+        if ($string) {
 
-        	switch ($selector) {
-        		case 'first': 
-        			return ucfirst($string);
-        		case 'words':
-        			return ucwords($string);
-        		default:
-        			return strtoupper($string);
-        	}
+            switch ($selector) {
+                case 'first':
+                    return ucfirst($string);
+                case 'words':
+                    return ucwords($string);
+                default:
+                    return strtoupper($string);
+            }
         }
 
         return false;
     }
-	
+
 }

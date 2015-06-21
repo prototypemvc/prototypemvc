@@ -1,5 +1,8 @@
 <?php 
 
+namespace \pmvc\core;
+
+use \pmvc\core\validate;
 class number {
 
     public static function average($array = false, $decimals = 2) {

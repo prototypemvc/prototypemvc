@@ -1,13 +1,17 @@
-<?php 
+<?php
+
+namespace \pmvc\core;
+
+use \pmvc\core\validate;
 
 class data {
 
     public static function count($data = false) {
 
-        if($data && validate::isArray($data)) {
+        if ($data && validate::isArray($data)) {
 
             return count($data);
-        } else if($data && validate::isObject($data)) {
+        } else if ($data && validate::isObject($data)) {
 
             return count(get_object_vars($data));
         }
@@ -17,8 +21,8 @@ class data {
 
     public static function dump($data = false) {
 
-        if(isset($data)) {
-            
+        if (isset($data)) {
+
             echo var_dump($data);
             return true;
         }
@@ -28,9 +32,9 @@ class data {
 
     public static function get($key = false) {
 
-        if(isset($_GET)) {
+        if (isset($_GET)) {
 
-            if($key) {
+            if ($key) {
 
                 return $_GET[$key];
             }
@@ -43,10 +47,10 @@ class data {
 
     public static function keys($data = false) {
 
-        if($data && validate::isArray($data)) {
+        if ($data && validate::isArray($data)) {
 
             return array_keys($data);
-        } else if($data && validate::isObject($data)) {
+        } else if ($data && validate::isObject($data)) {
 
             return get_object_vars($data);
         }
@@ -56,9 +60,9 @@ class data {
 
     public static function post($key = false) {
 
-        if(isset($_POST)) {
+        if (isset($_POST)) {
 
-            if($key) {
+            if ($key) {
 
                 return $_POST[$key];
             }
@@ -71,7 +75,7 @@ class data {
 
     public static function pre($data = false) {
 
-        if($data) {
+        if ($data) {
 
             $type = self::type($data);
 
@@ -79,17 +83,17 @@ class data {
                 'array' => 'print_r',
                 'double' => 'echo',
                 'integer' => 'echo',
-                'json' => 'json_encode', 
+                'json' => 'json_encode',
                 'string' => 'echo',
             );
 
             echo '<pre>';
-            if(array_key_exists($type, $functions)) {
+            if (array_key_exists($type, $functions)) {
 
-                if($functions[$type] === 'echo') {
-                    
+                if ($functions[$type] === 'echo') {
+
                     echo $data;
-                } else if($functions[$type] === 'json_encode') {
+                } else if ($functions[$type] === 'json_encode') {
 
                     $json = json_decode($data);
                     echo json_encode($json, JSON_PRETTY_PRINT);
@@ -107,9 +111,9 @@ class data {
 
     public static function session($key = false) {
 
-        if(isset($_SESSION)) {
+        if (isset($_SESSION)) {
 
-            if($key) {
+            if ($key) {
 
                 return $_SESSION[$key];
             }
@@ -122,13 +126,13 @@ class data {
 
     public static function type($data = false) {
 
-        if($data) {
+        if ($data) {
 
             $dataType = gettype($data);
 
-            if($dataType === 'string') {
+            if ($dataType === 'string') {
 
-                if(validate::isJson($data)) {
+                if (validate::isJson($data)) {
                     $dataType = 'json';
                 }
             }
