@@ -1,5 +1,7 @@
 <?php
 
+namespace \pmvc\helpers;
+use \PDO;
 class Database extends PDO{
 
 	function __construct(){

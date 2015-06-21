@@ -1,5 +1,7 @@
 <?php 
 
+namespace \pmvc\helpers;
+use \DateTime;
 class date {
 
 	public static function difference($date1, $date2 = false, $format = 'seconds') {

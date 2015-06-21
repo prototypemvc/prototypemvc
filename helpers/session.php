@@ -1,5 +1,6 @@
 <?php
 
+namespace \pmvc\helpers;
 class session {
 
 	private static $_sessionStarted = false;

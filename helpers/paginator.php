@@ -6,6 +6,7 @@
  * @version 1.0
  * @date October 20, 2012
  */
+namespace \pmvc\helpers;
 class Paginator{
 
 	/**

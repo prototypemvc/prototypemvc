@@ -6,6 +6,7 @@
  * @license http://www.opensource.org/licenses/mit-license.html MIT License
  * @copyright 2012 The Authors
  */
+namespace \pmvc\helpers;
 
 if (!defined('PASSWORD_DEFAULT')) {
 
