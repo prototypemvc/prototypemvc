@@ -1,42 +1,9 @@
 <?php
 
-class Controller extends Bootstrap {
-
-	protected $_view;
+class controller extends Bootstrap {
 
 	public function __construct(){
 		parent::__construct();
-		$this->_view = new view();
-	}
-
-
-	//function to load model on request
-	public function loadModel($name){
-
-		$modelpath = strtolower('../modules/'.explode('_', $name)[0].'/model/'.$name.'.php');
-
-		//try to load and instantiate model		
-		if(file_exists($modelpath)){
-			
-			require $modelpath;
-
-			//break name into sections based on a / 
-			$parts = explode('/',$name);
-
-			//use last part of array
-			$modelName = ucwords(end($parts));
-
-			//instantiate object
-			$model = new $modelName();
-
-		} else {
-			$this->_error("Model does not exist: ".$modelpath);
-			return false;
-		}
-
-		//return object to controller
-		return $model;
-
 	}
 
 }

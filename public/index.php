@@ -1,50 +1,19 @@
 <?php
+
 ob_start();
-	
-//set timezone
-date_default_timezone_set('Europe/London');
 
-//site address
-define('DIR','http://domain.com/');
-define('DOCROOT', dirname(__FILE__));
+define('DOC_ROOT', realpath(dirname(__FILE__) . '/../'));
+define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 
-//database details ONLY NEEDED IF USING A DATABASE
-define('DB_TYPE','mysql');
-define('DB_HOST','localhost');
-define('DB_NAME','database name');
-define('DB_USER','username');
-define('DB_PASS','password');
-define('PREFIX','smvc_');
+require '../core/autoloader.php';
+spl_autoload_register("autoloader::load");
 
-//set prefix for sessions
-define('SESSION_PREFIX','smvc_');
-
-//optionall create a constant for the name of the site
-define('SITETITLE','Simple MVC Framework');
-
-function autoloadsystem($class) {
-
-   $filename = "../core/" . strtolower($class) . ".php";
-   if(file_exists($filename)){
-      require $filename;
-   }
-
-   $filename = "../helpers/" . strtolower($class) . ".php";
-   if(file_exists($filename)){
-      require $filename;
-   } 
- 
-}
-spl_autoload_register("autoloadsystem");
-
-set_exception_handler('logger::exception_handler');
-set_error_handler('logger::error_handler');
+$environment = config::get('environment', 'live');
+$timezone = config::get('environment', $environment, 'timezone');
+date_default_timezone_set($timezone);
 
 $app = new Bootstrap();
 $app->setController('welcome');
-$app->setTemplate('default');
 $app->init();
 
 ob_flush();
-
-?>

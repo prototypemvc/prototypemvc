@@ -1,11 +1,21 @@
 <?php 
 
-class Model {
+class model {
 
-	protected $_db;
-	
-	public function __construct(){
-		//connect to PDO here.
-		//$this->_db = new Database();
+	public static function load($model = false) {
+
+		$path = DOC_ROOT . config::get('paths', 'modules');
+
+		if($model && file::isFile($path . $model . '.php')) {
+
+			$modelName = end(explode('/',$model));
+
+			require $path . $model . '.php';
+			
+			return new $modelName();
+		}
+
+		return false;
 	}
+
 }
