@@ -7,12 +7,8 @@ use \Pmvc\Helpers\Session;
 class Url {
 
     public static function redirect($url = null) {
-        header('location: ' . DIR . $url);
+        header('location: ' . BASE_URL . '/' . $url);
         exit;
-    }
-
-    public static function get_template_path() {
-        return DIR . 'templates/' . Session::get('template') . '/';
     }
 
 }
