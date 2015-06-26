@@ -61,7 +61,7 @@ class Session {
         return false;
     }
 
-    public static function set($key, $value) {
+    public static function set() {
         $keys = func_get_args();
         $session = $_SESSION;
 
