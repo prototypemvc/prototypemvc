@@ -8,7 +8,7 @@ use \Pmvc\Core\File;
 
 class Config {
 
-    public function get() {
+    public static function get() {
 
         $keys = func_get_args();
         $config = self::getConfig();
@@ -77,7 +77,7 @@ class Config {
         return false;
     }
 
-    public function getConfig() {
+    public static function getConfig() {
 
         $default = Format::jsonToArray(File::get('../config/default.config.json'));
         $custom = Format::jsonToArray(File::get('../config/custom.config.json'));
@@ -95,7 +95,7 @@ class Config {
 
     /* Thanks to Wojtazzz on stackoverflow, http://stackoverflow.com/questions/20550442/merging-arrays-and-overwriting-value-when-keys-are-equal */
 
-    private function merge($array1, $array2) {
+    private static function merge($array1, $array2) {
 
         foreach (array_keys($array2) as $key) {
             if (isset($array1[$key])) {
