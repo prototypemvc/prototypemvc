@@ -13,8 +13,9 @@ class Model {
 
         if ($model && File::isFile($path . $model . '.php')) {
 
-            $modelName = end(explode('/', $model));
-
+            $array = explode('/', $model);
+            $modelName = end($array);
+          
             require $path . $model . '.php';
 
             return new $modelName();
