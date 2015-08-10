@@ -64,10 +64,20 @@ class Date {
     }
 
     // werkt nog niet helemaal, werkt alleen bij y-m-d, moet alle datum type accepteren!
+    public static function isDate($date, $format = 'Y-m-d H:i:s') {
+
+        if($date) {
+
+             $DateTime = DateTime::createFromFormat($format, $date);
+            return $DateTime && $DateTime->format($format) == $date;
+        }
+        
+        return false;
+    }
+
     public static function isValid($date, $format = 'Y-m-d H:i:s') {
 
-        $DateTime = DateTime::createFromFormat($format, $date);
-        return $DateTime && $DateTime->format($format) == $date;
+        return self::isDate($date, $format);
     }
 
     public static function setTimezone($timezone) {

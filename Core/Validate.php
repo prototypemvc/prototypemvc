@@ -34,7 +34,7 @@ class validate {
 
     public static function isDate($input = false, $format = 'Y-m-d H:i:s') {
 
-        if ($input && Date::isValid($input)) {
+        if ($input && Date::isDate($input)) {
 
             return true;
         }
