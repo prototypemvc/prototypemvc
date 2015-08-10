@@ -3,6 +3,7 @@
 namespace Pmvc\Core;
 
 use \Pmvc\Core\Data;
+use \Pmvc\Helpers\Date;
 
 class validate {
 
@@ -24,6 +25,16 @@ class validate {
     public static function isBoolean($input = false) {
 
         if ($input && is_bool($input)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function isDate($input = false, $format = 'Y-m-d H:i:s') {
+
+        if ($input && Date::isValid($input)) {
 
             return true;
         }
