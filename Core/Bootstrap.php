@@ -11,6 +11,11 @@ class Bootstrap {
     private $_defaultController;
 
     public function __construct() {
+        //bypass namespaces?
+        if(Config::get('namespaces') !== null && Config::get('namespaces') === false) {
+            LazyLoad::on();
+        }
+        
         //start the session class
         Session::init();
 
