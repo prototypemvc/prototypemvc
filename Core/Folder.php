@@ -4,6 +4,21 @@ namespace Pmvc\Core;
 
 class Folder {
 
+    public static function create($path = false, $mode = 0777) {
+
+        if($path && !self::isFolder(dirname($path)) && self::isWritable(dirname($path))) {
+
+            mkdir($path, $mode);
+
+            if(Folder::isFolder($path)) {
+
+                return true;
+            }
+        } 
+
+        return false;
+    }
+
     public static function get($path = false) {
 
         if ($path && self::isFolder($path)) {
