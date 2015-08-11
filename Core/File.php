@@ -95,17 +95,17 @@ class File {
 
         if ($file && self::isFile($file)) {
 
-            $filesize = filesize($file);
+            $size = filesize($file);
 
             switch ($format) {
                 case 'bytes':
-                    return $filesize;
+                    return $size;
                     break;
                 case 'kb':
-                    return Number::round(($filesize / 1024), 2);
+                    return Number::round(($size / 1024), 2);
                     break;
                 case 'mb':
-                    return Number::round(($filesize / 1048576), 2);
+                    return Number::round(($size / 1048576), 2);
                     break;
             }
         }
