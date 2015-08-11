@@ -35,4 +35,14 @@ class Folder {
         return false;
     }
 
+
+    public function isWritable($path = false) {
+
+        if($path && is_writable($path)) {
+
+            return true;
+        }
+
+        return false;
+    }
 }
