@@ -60,4 +60,30 @@ class Folder {
 
         return false;
     }
+
+    /* Inspired by: https://gist.github.com/eusonlito/5099936 */ 
+    public static function size($path = false, $format = 'bytes') {
+
+        if($path && self::isFolder($path)) {
+
+            $size = 0;
+            foreach (glob(rtrim($path, '/').'/*', GLOB_NOSORT) as $each) {
+                $size += is_file($each) ? filesize($each) : self::size($each);
+            }
+
+            switch ($format) {
+                case 'bytes':
+                    return $size;
+                    break;
+                case 'kb':
+                    return Number::round(($size / 1024), 2);
+                    break;
+                case 'mb':
+                    return Number::round(($size / 1048576), 2);
+                    break;
+            }
+        }
+
+        return false;
+    }
 }
