@@ -32,6 +32,16 @@ class Text {
         return false;
     }
 
+    public static function hash($string = false) {
+
+        if($string) {
+
+            return sha1($string);
+        }
+
+        return false;
+    }
+
     public static function length($string = false) {
 
         if ($string) {
