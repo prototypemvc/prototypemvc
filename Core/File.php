@@ -48,6 +48,28 @@ class File {
         return false;
     }
 
+    public static function download($path = false, $extension = false, $name = false) {
+
+        if($path && File::isFile($path)) {
+
+            if(!$extension) {
+                $extension = File::extension($path);
+            }
+
+            if(!$name) {
+                $name = basename($path);
+            }
+
+            header('Content-Type: application/' . $extension);
+            header("Content-Transfer-Encoding: Binary");
+            header("Content-disposition: attachment; filename=" . $name);
+            readfile($path);
+            exit();
+        }
+
+        return false;
+    }
+
     public static function extension($file = false) {
 
         if ($file && self::isFile($file)) {
