@@ -78,6 +78,16 @@ class File {
         return false;
     }
 
+    public function isWritable($path = false) {
+
+        if($path && self::isFile($path) && is_writable($path)) {
+
+            return true;
+        }
+
+        return false;
+    }
+
     public static function remove($file = false) {
 
         if ($file) {
