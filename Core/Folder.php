@@ -53,7 +53,7 @@ class Folder {
 
     public function isWritable($path = false) {
 
-        if($path && is_writable($path)) {
+        if($path && self::isFolder($path) && is_writable($path)) {
 
             return true;
         }
