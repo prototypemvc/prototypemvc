@@ -28,6 +28,11 @@ class view {
         return false;
     }
 
+    public static function download($path = false, $extension = false, $name = false) {
+
+        File::download($path, $extension, $name);
+    }
+
     public static function load($file = false, $data = false) {
 
         if ($file && !Text::contains($file, '.php')) {
