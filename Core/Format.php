@@ -183,7 +183,7 @@ class Format {
 
         if ($array && Validate::isArray($array)) {
 
-            $object = new stdClass();
+            $object = new \stdClass();
 
             foreach ($array as $key => $value) {
 
