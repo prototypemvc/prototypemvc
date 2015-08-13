@@ -108,6 +108,21 @@ class Data {
             echo '</pre>';
         }
     }
+    
+    public static function request($key = false) {
+
+        if (isset($_REQUEST)) {
+
+            if ($key) {
+
+                return $_REQUEST[$key];
+            }
+
+            return $_REQUEST;
+        }
+
+        return false;
+    }
 
     public static function session($key = false) {
 
