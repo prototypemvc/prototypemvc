@@ -19,6 +19,31 @@ class Folder {
         return false;
     }
 
+    public static function find($fileName = false, $path = false) {
+
+        if($fileName) {
+
+            if(!$path) {
+
+                $path = __DIR__;
+            }
+
+            if(self::isFolder($path)) {
+
+                $dir = new \RecursiveDirectoryIterator($path);
+                foreach (new \RecursiveIteratorIterator($dir) as $filePath) {
+                    
+                    if($fileName == basename($filePath)) {
+
+                        return $filePath;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
     public static function get($path = false) {
 
         if ($path && self::isFolder($path)) {
