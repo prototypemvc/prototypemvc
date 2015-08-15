@@ -19,7 +19,6 @@ class Folder {
         return false;
     }
 
-
     public static function find($fileName = false, $path = false) {
 
         if($fileName) {
