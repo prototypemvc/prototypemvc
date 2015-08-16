@@ -108,6 +108,24 @@ class Data {
             echo '</pre>';
         }
     }
+
+    public static function random($data = false) {
+
+        if($data) {
+
+            if(Validate::isObject($data)) {
+
+                $data = Format::objectToArray($data);
+            }
+
+            if(Validate::isArray($data)) {
+
+                return $data[array_rand($data, 1)];
+            } 
+        }
+
+        return false;
+    }
     
     public static function request($key = false) {
 
