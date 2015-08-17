@@ -2,6 +2,7 @@
 
 namespace Pmvc\Core;
 
+use \Pmvc\Core\Format;
 use \Pmvc\Core\Validate;
 
 class Data {
