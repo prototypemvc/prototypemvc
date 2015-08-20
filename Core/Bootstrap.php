@@ -67,8 +67,13 @@ class Bootstrap {
         if (file_exists($file)) {
             require $file;
 
-            //instatiate controller
-            $this->_controller = new $this->_url_controller;
+            if(class_exists($this->_url_controller)) {
+                //instatiate controller
+                $this->_controller = new $this->_url_controller;
+            } else {
+                $this->_error("Controller does not exist: " . $this->_url_controller);
+                return false;
+            }
         } else {
             $this->_error("File does not exist: " . $this->_url_controller);
             return false;
@@ -80,12 +85,16 @@ class Bootstrap {
      */
     protected function _callControllerMethod() {
 
+        // Make sure the controller we are calling exists
+        if (!isset($this->_controller) || !is_object($this->_controller)) {
+            $this->_error("Controller does not exist: " . $this->_url_controller);
+            return false;
+        }
+
         // Make sure the method we are calling exists
-        if (isset($this->_controller)) {
-            if (!method_exists($this->_controller, $this->_url_method)) {
-                $this->_error("Method does not exist: " . $this->_url_method);
-                return false;
-            }
+        if (!method_exists($this->_controller, $this->_url_method)) {
+            $this->_error("Method does not exist: " . $this->_url_method);
+            return false;
         }
 
         call_user_method_array($this->_url_method, $this->_controller, $this->_url_args);
