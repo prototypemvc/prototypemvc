@@ -6,7 +6,10 @@ use \Pmvc\Helpers\Session;
 
 class Bootstrap {
 
-    protected $_url;
+    private $_url_args;
+    private $_url_controller;
+    private $_url_method;
+
     private $_controller = NULL;
     private $_defaultController;
 
@@ -30,19 +33,24 @@ class Bootstrap {
     public function init() {
 
         //if no page requested set default controller
-        if (empty($this->_url[0])) {
+        if (!empty($this->_url_controller)) {
+            $this->_loadExistingController();
+            $this->_callControllerMethod();
+        } else {
             $this->_loadDefaultController();
             return false;
         }
-
-        $this->_loadExistingController();
-        $this->_callControllerMethod();
     }
 
     protected function _getUrl() {
         $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : NULL;
         $url = filter_var($url, FILTER_SANITIZE_URL);
-        $this->_url = explode('/', $url);
+        $parts = explode('/',$url);
+        $parts = array_filter($parts);
+
+        $this->_url_controller = ($c = array_shift($parts))? $c: false;
+        $this->_url_method = ($c = array_shift($parts))? $c: 'index';
+        $this->_url_args = (isset($parts[0])) ? $parts : array();
     }
 
     protected function _loadDefaultController() {
@@ -54,67 +62,33 @@ class Bootstrap {
     protected function _loadExistingController() {
 
         //set url for controllers
-        $file = '../modules/' . $this->_url[0] . '/controller/' . $this->_url[0] . '.php';
+        $file = '../modules/' . $this->_url_controller. '/controller/' . $this->_url_controller . '.php';
 
         if (file_exists($file)) {
             require $file;
 
             //instatiate controller
-            $this->_controller = new $this->_url[0];
+            $this->_controller = new $this->_url_controller;
         } else {
-            $this->_error("File does not exist: " . $this->_url[0]);
+            $this->_error("File does not exist: " . $this->_url_controller);
             return false;
         }
     }
 
     /**
      * If a method is passed in the GET url paremter
-     * 
-     *  http://localhost/controller/method/(param)/(param)/(param)
-     *  url[0] = Controller
-     *  url[1] = Method
-     *  url[2] = Param
-     *  url[3] = Param
-     *  url[4] = Param
      */
     protected function _callControllerMethod() {
-        $length = count($this->_url);
 
         // Make sure the method we are calling exists
-        if ($length > 1) {
-            if (!method_exists($this->_controller, $this->_url[1])) {
-                $this->_error("Method does not exist: " . $this->_url[1]);
+        if (isset($this->_controller)) {
+            if (!method_exists($this->_controller, $this->_url_method)) {
+                $this->_error("Method does not exist: " . $this->_url_method);
                 return false;
             }
         }
 
-
-        // Determine what to load
-        switch ($length) {
-            case 5:
-                //Controller->Method(Param1, Param2, Param3)
-                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3], $this->_url[4]);
-                break;
-
-            case 4:
-                //Controller->Method(Param1, Param2)
-                $this->_controller->{$this->_url[1]}($this->_url[2], $this->_url[3]);
-                break;
-
-            case 3:
-                //Controller->Method(Param1)
-                $this->_controller->{$this->_url[1]}($this->_url[2]);
-                break;
-
-            case 2:
-                //Controller->Method()
-                $this->_controller->{$this->_url[1]}();
-                break;
-
-            default:
-                $this->_controller->index();
-                break;
-        }
+        call_user_method_array($this->_url_method, $this->_controller, $this->_url_args);
     }
 
     /**
@@ -123,10 +97,7 @@ class Bootstrap {
      * @return boolean
      */
     protected function _error($error) {
-        require '../core/error.php';
-        $this->_controller = new Error($error);
-        $this->_controller->index();
-        die;
+        die($error);
     }
 
 }
