@@ -4,9 +4,9 @@ namespace Pmvc\Core;
 
 class Text {
 
-    public static function contains($string, $substring = false) {
+    public static function contains($string = false, $substring = false) {
 
-        if ($substring && strpos($string, $substring) !== false) {
+        if ($substring && $substring && strpos($string, $substring) !== false) {
 
             return true;
         }
