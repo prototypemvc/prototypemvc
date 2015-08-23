@@ -80,7 +80,7 @@ class Date {
         return self::isDate($date, $format);
     }
 
-    public static function setTimezone($timezone) {
+    public static function setTimezone($timezone = 'UTC') {
 
         date_default_timezone_set($timezone);
     }
