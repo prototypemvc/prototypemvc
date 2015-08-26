@@ -171,7 +171,7 @@ class File {
         return false;
     }
 
-    public function write($file = false, $content = false) {
+    public static function write($file = false, $content = false) {
 
         if ($file && $content) {
 
