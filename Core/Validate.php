@@ -3,6 +3,7 @@
 namespace Pmvc\Core;
 
 use \Pmvc\Core\Data;
+use \Pmvc\Core\File;
 use \Pmvc\Helpers\Date;
 
 class validate {
@@ -170,6 +171,19 @@ class validate {
         if ($input && !filter_var($input, FILTER_VALIDATE_URL) === false) {
 
             return true;
+        }
+
+        return false;
+    }
+
+    public static function isZip($input = false) {
+
+        if($input) {
+
+            if(File::isFile($input) && File::extension($input) === 'zip') {
+
+                return true;
+            }
         }
 
         return false;
