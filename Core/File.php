@@ -79,6 +79,32 @@ class File {
 
         return false;
     }
+    
+    public static function extract($file = false, $destination = false) {
+
+        if($file) {
+
+            if(!$destination) {
+                $destination = __DIR__;
+            }
+
+            if(!Folder::isFolder($destination)) {
+                if(!Folder::create($destination)) {
+                    return false;
+                }
+            }
+
+            $zip = new \ZipArchive;
+            $res = $zip->open($file);
+            if ($res === true) {
+              $zip->extractTo($destination);
+              $zip->close();
+              return true;
+            } 
+        }
+
+        return false;
+    }
 
     public static function get($file = false) {
 
