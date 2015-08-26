@@ -126,7 +126,7 @@ class File {
         return false;
     }
 
-    public function isWritable($path = false) {
+    public static function isWritable($path = false) {
 
         if($path && self::isFile($path) && is_writable($path)) {
 
