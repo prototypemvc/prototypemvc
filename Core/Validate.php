@@ -166,7 +166,7 @@ class validate {
         return false;
     }
 
-    public static function isUrl($input) {
+    public static function isUrl($input = false) {
 
         if ($input && !filter_var($input, FILTER_VALIDATE_URL) === false) {
 
