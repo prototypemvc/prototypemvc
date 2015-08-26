@@ -171,6 +171,11 @@ class File {
         return false;
     }
 
+    public static function unzip($file = false, $destination = false) {
+
+        return self::extract($file, $destination);
+    }
+
     public static function write($file = false, $content = false) {
 
         if ($file && $content) {
