@@ -2,6 +2,7 @@
 
 namespace Pmvc\Core;
 
+use Pmvc\Core\Folder;
 use Pmvc\Core\Number;
 
 class File {
@@ -104,6 +105,11 @@ class File {
         }
 
         return false;
+    }
+
+    public static function find($fileName = false, $path = false) {
+
+        return Folder::find($filename, $path);
     }
 
     public static function get($file = false) {
