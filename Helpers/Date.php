@@ -8,11 +8,11 @@ class Date {
 
     public static function difference($date1, $date2 = false, $format = 'seconds') {
 
-        if (!$date1 || !self::isValidDate($date1)) {
+        if (!$date1 || !self::isValid($date1)) {
             return false;
         }
 
-        if (!empty($date2) && !self::isValidDate($date2)) {
+        if (!empty($date2) && !self::isValid($date2)) {
             $format = $date2;
             $date2 = false;
         }
