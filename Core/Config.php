@@ -29,6 +29,9 @@ class Config {
                 } else if ($number != 0 && isset($value[$name])) {
 
                     $value = $value[$name];
+                } else {
+
+                    return false;
                 }
             }
 
