@@ -76,7 +76,7 @@ class Folder {
     }
 
 
-    public function isWritable($path = false) {
+    public static function isWritable($path = false) {
 
         if($path && self::isFolder($path) && is_writable($path)) {
 
@@ -114,7 +114,7 @@ class Folder {
 
     // thanks to: Alix Axel & Raohmaru
     // http://stackoverflow.com/questions/1334613/how-to-recursively-zip-a-directory-in-php
-    public function zip($source = false, $destination = false) {
+    public static function zip($source = false, $destination = false) {
 
         if($source) {
 
