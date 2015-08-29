@@ -80,7 +80,7 @@ class Config {
         return false;
     }
 
-    public static function getConfig() {
+    private static function getConfig() {
 
         $default = Format::jsonToArray(File::get('../config/default.config.json'));
         $custom = Format::jsonToArray(File::get('../config/custom.config.json'));
