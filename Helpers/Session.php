@@ -105,7 +105,7 @@ class Session {
         }
     }
 
-    public static function start() {
+    private static function start() {
 
         session_start();
     }
