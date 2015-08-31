@@ -166,7 +166,7 @@ class Format {
     }
 
     // source: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
-    public static function objectToArrayRecursive($obj) {
+    private static function objectToArrayRecursive($obj) {
         if (is_object($obj))
             $obj = (array) $obj;
         if (is_array($obj)) {
