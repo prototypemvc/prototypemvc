@@ -6,7 +6,7 @@ use \DateTime;
 
 class Date {
 
-    public static function difference($date1, $date2 = false, $format = 'seconds') {
+    public static function difference($date1 = false, $date2 = false, $format = 'seconds') {
 
         if (!$date1 || !self::isValid($date1)) {
             return false;
@@ -51,10 +51,15 @@ class Date {
         }
     }
 
-    public static function format($date, $format = 'Y-m-d H:i:s') {
+    public static function format($date = false, $format = 'Y-m-d H:i:s') {
 
-        $DateTime = new DateTime($date);
-        return $DateTime->format($format);
+        if($data) {
+
+            $DateTime = new DateTime($date);
+            return $DateTime->format($format);
+        }
+
+        return false;
     }
 
     public static function now($format = 'Y-m-d H:i:s') {
@@ -64,7 +69,7 @@ class Date {
     }
 
     // werkt nog niet helemaal, werkt alleen bij y-m-d, moet alle datum type accepteren!
-    public static function isDate($date, $format = 'Y-m-d H:i:s') {
+    public static function isDate($date = false, $format = 'Y-m-d H:i:s') {
 
         if($date) {
 
@@ -75,7 +80,7 @@ class Date {
         return false;
     }
 
-    public static function isValid($date, $format = 'Y-m-d H:i:s') {
+    public static function isValid($date = false, $format = 'Y-m-d H:i:s') {
 
         return self::isDate($date, $format);
     }

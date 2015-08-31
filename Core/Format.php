@@ -63,16 +63,16 @@ class Format {
         return false;
     }
 
-    public static function toBool($var = false) {
+    public static function toBool($input = false) {
 
-        return self::toBoolean($var);
+        return self::toBoolean($input);
     }
 
-    public static function toBoolean($var = false) {
+    public static function toBoolean($input = false) {
 
-        if ($var) {
+        if ($input) {
 
-            $boolean = (bool) $var;
+            $boolean = (bool) $input;
             if (Validate::isBoolean($boolean)) {
 
                 return $boolean;
@@ -82,11 +82,11 @@ class Format {
         return false;
     }
 
-    public static function toFloat($var = false) {
+    public static function toFloat($input = false) {
 
-        if ($var && Validate::isNumber($var)) {
+        if ($input && Validate::isNumber($input)) {
 
-            $float = (float) $var;
+            $float = (float) $input;
             if (Validate::isFloat($float)) {
 
                 return $float;
@@ -96,16 +96,16 @@ class Format {
         return false;
     }
 
-    public static function toInt($var = false) {
+    public static function toInt($input = false) {
 
-        return self::toInterger($var);
+        return self::toInterger($input);
     }
 
-    public static function toInteger($var = false) {
+    public static function toInteger($input = false) {
 
-        if ($var && Validate::isNumber($var)) {
+        if ($input && Validate::isNumber($input)) {
 
-            $integer = (int) $var;
+            $integer = (int) $input;
             if (Validate::isInteger($integer)) {
 
                 return $integer;
@@ -140,11 +140,11 @@ class Format {
         return false;
     }
 
-    public static function toString($var = false) {
+    public static function toString($input = false) {
 
-        if ($var) {
+        if ($input) {
 
-            $string = (string) $var;
+            $string = (string) $input;
             if (Validate::isString($string)) {
 
                 return $string;
@@ -154,11 +154,10 @@ class Format {
         return false;
     }
 
-    public static function objectToArray($object) {
+    public static function objectToArray($object = false) {
 
         if ($object && Validate::isObject($object)) {
 
-            //return (array) $object;
             return self::objectToArrayRecursive($object);
         }
 
@@ -166,16 +165,16 @@ class Format {
     }
 
     // source: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
-    private static function objectToArrayRecursive($obj) {
-        if (is_object($obj))
-            $obj = (array) $obj;
-        if (is_array($obj)) {
+    private static function objectToArrayRecursive($object) {
+        if (is_object($object))
+            $object = (array) $object;
+        if (is_array($object)) {
             $new = array();
-            foreach ($obj as $key => $val) {
+            foreach ($object as $key => $val) {
                 $new[$key] = self::objectToArrayRecursive($val);
             }
         } else
-            $new = $obj;
+            $new = $object;
         return $new;
     }
 
