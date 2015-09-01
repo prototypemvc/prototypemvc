@@ -169,13 +169,15 @@ class validate {
     * @param string input 
     * @param int min value 
     * @param int max value 
+    * @example isLength('hello world', 2) - returns true, 9 is longer then 2
+    * @example isLength('hello world', 2, 5) - returns false, 9 is longer then 5
     * @return boolean
     */ 
-    public static function isLength($string = false, $min = 0, $max = false) {
+    public static function isLength($string = false, $minLength = 0, $maxLength = false) {
 
-        if ($string && strlen($string) >= $min) {
+        if ($string && strlen($string) >= $minLength) {
 
-            if (!$max || strlen($string) <= $max) {
+            if (!$maxLength || strlen($string) <= $maxLength) {
 
                 return true;
             }
