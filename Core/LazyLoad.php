@@ -2,17 +2,6 @@
 
 namespace Pmvc\Core;
 
-/* 
-* LazyLoad
-* 
-* Bypass namespaces 
-*
-* set Config::set('namespaces', 'false');
-*
-* For example: instead Pmvc\Core\Text simply use Text,
-* NOT RECOMMENDED in a production environment because of 
-* poor performance. But fine in development for rapid prototyping.
-*/
 class LazyLoad {
 
     private static $classes = array(
@@ -39,6 +28,12 @@ class LazyLoad {
         'Url'
     );
 
+    /** 
+    * Bypass namespaces. 
+    * WARNING! Not recommended for use in a production environment because of 
+    * poor performance. But fine in development for rapid prototyping.
+    * @example instead of Pmvc\Core\Text::methodX simply use Text::methodX
+    */
     public static function on() {
 
         foreach(self::$classes as $k => $class) {
