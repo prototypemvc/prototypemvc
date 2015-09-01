@@ -2,8 +2,8 @@
 
 namespace Pmvc\Core;
 
-use Pmvc\Core\Folder;
-use Pmvc\Core\Number;
+use \Pmvc\Core\Folder;
+use \Pmvc\Core\Number;
 
 class File {
 
