@@ -8,6 +8,14 @@ use \Pmvc\Core\File;
 
 class Config {
 
+    /** 
+    * Get value(s) from config. 
+    * @param use params to move deeper into array 
+    * @example get() - get complete config
+    * @example get('meta') - get array of all meta data
+    * @example get('meta', 'title') - get meta title (string)
+    * @return string || array 
+    */ 
     public static function get() {
 
         $keys = func_get_args();
@@ -44,6 +52,13 @@ class Config {
         return false;
     }
 
+    /** 
+    * Set value(s) in config. 
+    * @param use params to move deeper into array 
+    * @param last param is the value you want to set 
+    * @example get('meta', 'title', 'Great title') - set meta title to 'Great title'
+    * @return boolean
+    */ 
     public static function set() {
 
         $keys = func_get_args();
@@ -80,6 +95,11 @@ class Config {
         return false;
     }
 
+    /** 
+    * Stack custom config on top of default config to get a complete config array.  
+    * @param use params to move deeper into array 
+    * @return array with merged config 
+    */ 
     private static function getConfig() {
 
         $default = Format::jsonToArray(File::get('../config/default.config.json'));
@@ -96,8 +116,13 @@ class Config {
         return false;
     }
 
-    /* Thanks to Wojtazzz on stackoverflow, http://stackoverflow.com/questions/20550442/merging-arrays-and-overwriting-value-when-keys-are-equal */
-
+    /** 
+    * Merge two arrays. 
+    * @param array first array
+    * @param array second array
+    * @return array the two arrays combined into one
+    * Thanks to Wojtazzz on stackoverflow, http://stackoverflow.com/questions/20550442/merging-arrays-and-overwriting-value-when-keys-are-equal
+    */ 
     private static function merge($array1, $array2) {
 
         foreach (array_keys($array2) as $key) {
