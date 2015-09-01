@@ -3,6 +3,7 @@
 namespace Pmvc\Core;
 
 use \Pmvc\Core\Validate;
+
 class Number {
 
     public static function average($array = false, $decimals = 2) {

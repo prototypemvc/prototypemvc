@@ -2,8 +2,8 @@
 
 namespace Pmvc\Helpers;
 
-use Pmvc\Core\Config;
-use Pmvc\Core\Data;
+use \Pmvc\Core\Config;
+use \Pmvc\Core\Data;
 
 class Session {
 

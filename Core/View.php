@@ -9,6 +9,11 @@ use \Pmvc\Core\Format;
 
 class view {
 
+    /**
+    * Load a given CSS file. 
+    * @param string path to file  
+    * @return boolean 
+    */
     public static function css($file = false) {
 
         if ($file && !Text::contains($file, '.css')) {
@@ -28,11 +33,27 @@ class view {
         return false;
     }
 
+    /** 
+    * Force a file download by setting headers.  
+    * @param string path to file 
+    * @param string extension 
+    * @param string file name on client side  
+    * @example download('folder/error_log.pdf') 
+    * @example download('folder/error_log.pdf', 'pdf' ,'log.pdf')  
+    * @return boolean
+    */ 
     public static function download($path = false, $extension = false, $name = false) {
 
         File::download($path, $extension, $name);
     }
 
+    /**
+    * Load a given view. 
+    * @param string path to file  
+    * @example load('blog/view/index') 
+    * @example load('blog/view/index.php') 
+    * @return boolean 
+    */
     public static function load($file = false, $data = false) {
 
         if ($file && !Text::contains($file, '.php')) {
@@ -50,6 +71,11 @@ class view {
         return false;
     }
 
+    /**
+    * Load a given JavaScript file. 
+    * @param string path to file  
+    * @return boolean 
+    */
     public static function js($file = false) {
 
         if ($file && !Text::contains($file, '.js')) {
@@ -69,6 +95,12 @@ class view {
         return false;
     }
 
+    /**
+    * Echo JSON and exit. 
+    * @param mixed input
+    * @param boolean exit after displaying JSON? 
+    * @return boolean 
+    */
     public static function json($input = false, $exit = true) {
 
         if ($input) {
