@@ -68,7 +68,7 @@ class File {
     }
 
     /** 
-    * Download a file by setting headers.  
+    * Force a file download by setting headers.  
     * @param string path to file 
     * @param string extension 
     * @param string file name on client side  
