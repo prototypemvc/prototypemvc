@@ -43,7 +43,7 @@ class Load {
     * @param string path to file  
     * @example model('blog/model/blog') 
     * @example model('blog/model/blog.php') 
-    * @return boolean 
+    * @return object  
     */
     public static function model($file = false) {
 
