@@ -127,11 +127,11 @@ class Number {
     * @param array with values 
     * @return int || float
     */
-    public static function total($array = false) {
+    public static function total($array = false, $decimals = 2) {
 
         if($array && Validate::isArray($array)) {
 
-            return array_sum($array);
+            return self::round(array_sum($array), $decimals);
         }
 
         return false;
