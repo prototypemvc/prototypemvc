@@ -7,6 +7,12 @@ use \Pmvc\Core\Validate;
 
 class Format {
 
+    /** 
+    * Format array into json.
+    * @param array of data to be formatted 
+    * @param boolean weither to prettify json string or not
+    * @return string in json format
+    */
     public static function arrayToJson($array = false, $pretty = false) {
 
         if ($array && Validate::isArray($array)) {
@@ -22,6 +28,12 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format array into string.
+    * @param array of data to be formatted 
+    * @param string delimiter on which the string will be imploded 
+    * @return string of imploded array 
+    */
     public static function arrayToString($array = false, $delimiter = ' ') {
 
         if ($array && Validate::isArray($array)) {
@@ -32,6 +44,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format csv into array.
+    * @param string of csv to be formatted 
+    * @return array of formatted csv values 
+    */
     public static function csvToArray($csv = false) {
 
         if ($csv) {
@@ -42,6 +59,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format json into array.
+    * @param string in json format 
+    * @return array of json values and keys 
+    */
     public static function jsonToArray($json = false) {
 
         if ($json && Validate::isJson($json)) {
@@ -53,6 +75,12 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format string into array.
+    * @param string of data to be formatted 
+    * @param string delimiter on which the string will explode   
+    * @return array of exploded string 
+    */
     public static function stringToArray($string = false, $delimiter = ' ') {
 
         if ($string && Validate::isString($string)) {
@@ -63,11 +91,21 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into boolean. 
+    * @param mixed input 
+    * @return boolean 
+    */
     public static function toBool($input = false) {
 
         return self::toBoolean($input);
     }
 
+    /** 
+    * Format anything into boolean. 
+    * @param mixed input 
+    * @return boolean 
+    */
     public static function toBoolean($input = false) {
 
         if ($input) {
@@ -82,6 +120,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into float. 
+    * @param mixed input 
+    * @return float 
+    */
     public static function toFloat($input = false) {
 
         if ($input && Validate::isNumber($input)) {
@@ -96,11 +139,21 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into integer. 
+    * @param mixed input 
+    * @return integer 
+    */
     public static function toInt($input = false) {
 
         return self::toInterger($input);
     }
 
+    /** 
+    * Format anything into integer. 
+    * @param mixed input 
+    * @return integer 
+    */
     public static function toInteger($input = false) {
 
         if ($input && Validate::isNumber($input)) {
@@ -115,6 +168,12 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into json. 
+    * @param mixed input 
+    * @param boolean weither to prettify json string or not
+    * @return string in json format 
+    */
     public static function toJson($input = false, $pretty = false) {
 
         if ($input) {
@@ -140,6 +199,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into string. 
+    * @param mixed input 
+    * @return string 
+    */
     public static function toString($input = false) {
 
         if ($input) {
@@ -154,6 +218,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format object into array.
+    * @param object of data to be formatted 
+    * @return array 
+    */
     public static function objectToArray($object = false) {
 
         if ($object && Validate::isObject($object)) {
@@ -164,7 +233,12 @@ class Format {
         return false;
     }
 
-    // source: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
+    /** 
+    * Format object into array recursively.
+    * @param object of data to be formatted 
+    * @return array 
+    * Thanks to: http://ben.lobaugh.net/blog/567/php-recursively-convert-an-object-to-an-array
+    */
     private static function objectToArrayRecursive($object) {
         if (is_object($object))
             $object = (array) $object;
@@ -178,6 +252,11 @@ class Format {
         return $new;
     }
 
+    /** 
+    * Format array into object.
+    * @param array of data to be formatted 
+    * @return object 
+    */
     public static function arrayToObject($array = false) {
 
         if ($array && Validate::isArray($array)) {
@@ -195,6 +274,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format object into json.
+    * @param object of data to be formatted 
+    * @return string in json format  
+    */
     public static function objectToJson($object = false, $pretty = false) {
 
         if ($object && Validate::isObject($object)) {
@@ -206,6 +290,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into object. 
+    * @param mixed input 
+    * @return object 
+    */
     public static function toObject($input = false) {
 
         if ($input) {
@@ -228,6 +317,11 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format anything into array. 
+    * @param mixed input 
+    * @return array 
+    */
     public static function toArray($input = false) {
 
         if ($input) {
