@@ -56,7 +56,7 @@ class Config {
     * Set value(s) in config. 
     * @param use params to move deeper into array 
     * @param last param is the value you want to set 
-    * @example get('meta', 'title', 'Great title') - set meta title to 'Great title'
+    * @example set('meta', 'title', 'Great title') - set meta title to 'Great title'
     * @return boolean
     */ 
     public static function set() {
