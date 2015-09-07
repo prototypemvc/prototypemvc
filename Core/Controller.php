@@ -2,7 +2,7 @@
 
 namespace Pmvc\Core;
 
-use \ Pmvc\Core\Bootstrap;
+use \Pmvc\Core\Bootstrap;
 
 class Controller extends Bootstrap {
 
