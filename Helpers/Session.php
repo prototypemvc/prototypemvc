@@ -9,6 +9,10 @@ class Session {
 
     private static $_sessionStarted = false;
 
+    /** 
+    * Initialise a session. 
+    * Contains session_start();
+    */ 
     public static function init() {
 
         if (self::$_sessionStarted == false) {
@@ -17,7 +21,7 @@ class Session {
             self::$_sessionStarted = true;
         }
 
-        // thanks Jon, http://stackoverflow.com/questions/8311320/how-to-change-the-session-timeout-in-php
+        // Thanks Jon - http://stackoverflow.com/questions/8311320/how-to-change-the-session-timeout-in-php
         $now = time();
         if (isset($_SESSION['expiration_time']) && $now > $_SESSION['expiration_time']) {
 
@@ -34,6 +38,14 @@ class Session {
         $_SESSION['expiration_time'] = $now + $timeout;
     }
 
+    /** 
+    * Get value(s) from session. 
+    * @param use params to move deeper into array 
+    * @example get() - get complete session 
+    * @example get('user') - get array of all user data
+    * @example get('user', 'firstName') - get first name of user (string)
+    * @return string || array 
+    */ 
     public static function get() {
 
         $keys = func_get_args();
@@ -64,6 +76,13 @@ class Session {
         return false;
     }
 
+    /** 
+    * Set value(s) in session. 
+    * @param use params to move deeper into array 
+    * @param last param is the value you want to set 
+    * @example set('user', 'firstName', 'John') - set user's first name to 'John'
+    * @return boolean
+    */ 
     public static function set() {
         $keys = func_get_args();
         $session = $_SESSION;
@@ -95,6 +114,10 @@ class Session {
         return false;
     }
 
+    /** 
+    * Destroy a session. 
+    * Contains session_destroy();
+    */ 
     public static function destroy() {
 
         if (self::$_sessionStarted == true) {

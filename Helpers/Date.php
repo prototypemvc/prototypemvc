@@ -65,6 +65,12 @@ class Date {
         }
     }
     
+    /** 
+    * Get date in given format. 
+    * @param string date 
+    * @param string format 
+    * @return string date in specified format 
+    */ 
     public static function format($date = false, $format = 'Y-m-d H:i:s') {
 
         if($data) {
@@ -76,29 +82,49 @@ class Date {
         return false;
     }
 
+    /** 
+    * Get current date in given format. 
+    * @param string format 
+    * @return string date in specified format 
+    */ 
     public static function now($format = 'Y-m-d H:i:s') {
 
         $date = date($format);
         return self::format($date, $format);
     }
 
-    // werkt nog niet helemaal, werkt alleen bij y-m-d, moet alle datum type accepteren!
+    /** 
+    * Check if date is valid. 
+    * @param string date 
+    * @param string format 
+    * @return boolean 
+    */ 
     public static function isDate($date = false, $format = 'Y-m-d H:i:s') {
 
         if($date) {
 
-             $DateTime = DateTime::createFromFormat($format, $date);
+            $DateTime = DateTime::createFromFormat($format, $date);
             return $DateTime && $DateTime->format($format) == $date;
         }
         
         return false;
     }
 
+    /** 
+    * Check if date is valid. 
+    * @param string date 
+    * @param string format 
+    * @return boolean 
+    */ 
     public static function isValid($date = false, $format = 'Y-m-d H:i:s') {
 
         return self::isDate($date, $format);
     }
 
+    /** 
+    * Set script default timezone. 
+    * @param string timezone  
+    */ 
     public static function setTimezone($timezone = 'UTC') {
 
         date_default_timezone_set($timezone);
