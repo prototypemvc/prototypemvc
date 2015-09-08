@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmvc\Helpers;
+namespace Prototypemvc\Helpers;
 
-use \Pmvc\Helpers\Session;
+use \Prototypemvc\Helpers\Session;
 
 class Url {
 

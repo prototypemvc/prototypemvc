@@ -1,10 +1,10 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Format;
-use \Pmvc\Core\Data;
-use \Pmvc\Core\File;
+use \Prototypemvc\Core\Format;
+use \Prototypemvc\Core\Data;
+use \Prototypemvc\Core\File;
 
 class Config {
 

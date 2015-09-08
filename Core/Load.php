@@ -1,10 +1,10 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\View;
-use \Pmvc\Core\File;
-use \Pmvc\Core\Model;
+use \Prototypemvc\Core\View;
+use \Prototypemvc\Core\File;
+use \Prototypemvc\Core\Model;
 
 class Load {
 

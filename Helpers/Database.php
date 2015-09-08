@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmvc\Helpers;
+namespace Prototypemvc\Helpers;
 
 use \PDO;
 

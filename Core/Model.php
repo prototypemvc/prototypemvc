@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Config;
-use \Pmvc\Core\File;
+use \Prototypemvc\Core\Config;
+use \Prototypemvc\Core\File;
 
 class Model {
 

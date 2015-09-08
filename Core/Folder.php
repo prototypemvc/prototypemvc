@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
 class Folder {
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Bootstrap;
+use \Prototypemvc\Core\Bootstrap;
 
 class Controller extends Bootstrap {
 

@@ -1,8 +1,8 @@
 <?php 
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Validate;
+use \Prototypemvc\Core\Validate;
 
 class Number {
 

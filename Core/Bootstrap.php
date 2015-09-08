@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Helpers\Session;
+use \Prototypemvc\Helpers\Session;
 
 class Bootstrap {
 

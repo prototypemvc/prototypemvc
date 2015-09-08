@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use Pmvc\Core\Controller;
-use \Pmvc\Core\view;
+use Prototypemvc\Core\Controller;
+use \Prototypemvc\Core\view;
 
 class Error extends Controller {
 

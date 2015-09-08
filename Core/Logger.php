@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Config;
+use \Prototypemvc\Core\Config;
 
 class Logger {
 

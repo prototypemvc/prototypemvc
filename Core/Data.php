@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Format;
-use \Pmvc\Core\Validate;
+use \Prototypemvc\Core\Format;
+use \Prototypemvc\Core\Validate;
 
 class Data {
 

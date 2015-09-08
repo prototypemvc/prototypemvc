@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmvc\Helpers;
+namespace Prototypemvc\Helpers;
 
 /**
  * password class that uses a compatibility library with PHP 5.5's simplified password hashing API. (located in the vendor directory)

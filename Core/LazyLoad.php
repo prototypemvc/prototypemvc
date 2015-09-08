@@ -1,6 +1,6 @@
 <?php 
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
 class LazyLoad {
 
@@ -32,16 +32,16 @@ class LazyLoad {
     * Bypass namespaces. 
     * WARNING! Not recommended for use in a production environment because of 
     * poor performance. But fine in development for rapid prototyping.
-    * @example instead of Pmvc\Core\Text::methodX simply use Text::methodX
+    * @example instead of Prototypemvc\Core\Text::methodX simply use Text::methodX
     */
     public static function on() {
 
         foreach(self::$classes as $k => $class) {
             if (!class_exists($class)) {
-               if(class_exists('Pmvc\Core\\' . $class)) {
-                    class_alias('Pmvc\Core\\' . $class, $class);
-               } else if(class_exists('Pmvc\Helpers\\' . $class)) {
-                    class_alias('Pmvc\Helpers\\' . $class, $class);
+               if(class_exists('Prototypemvc\Core\\' . $class)) {
+                    class_alias('Prototypemvc\Core\\' . $class, $class);
+               } else if(class_exists('Prototypemvc\Helpers\\' . $class)) {
+                    class_alias('Prototypemvc\Helpers\\' . $class, $class);
                }
             }
         }

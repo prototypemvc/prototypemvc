@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Folder;
-use \Pmvc\Core\Number;
+use \Prototypemvc\Core\Folder;
+use \Prototypemvc\Core\Number;
 
 class File {
 

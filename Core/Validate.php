@@ -1,10 +1,10 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Data;
-use \Pmvc\Core\File;
-use \Pmvc\Helpers\Date;
+use \Prototypemvc\Core\Data;
+use \Prototypemvc\Core\File;
+use \Prototypemvc\Helpers\Date;
 
 class validate {
 

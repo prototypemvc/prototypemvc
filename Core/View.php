@@ -1,11 +1,11 @@
 <?php
 
-namespace Pmvc\Core;
+namespace Prototypemvc\Core;
 
-use \Pmvc\Core\Text;
-use \Pmvc\Core\Config;
-use \Pmvc\Core\File;
-use \Pmvc\Core\Format;
+use \Prototypemvc\Core\Text;
+use \Prototypemvc\Core\Config;
+use \Prototypemvc\Core\File;
+use \Prototypemvc\Core\Format;
 
 class view {
 
