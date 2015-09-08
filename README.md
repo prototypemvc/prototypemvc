@@ -1,4 +1,10 @@
-#prototypemvc
+#Prototypemvc
+
+Require prototypemvc in your project by using:
+
+```
+composer require prototypemvc/prototypemvc
+```
 
 ## Acknowledgement
 
