@@ -1,4 +1,6 @@
-#Prototypemvc
+#prototypemvc
+
+## rapid prototyping
 
 Require prototypemvc in your project by using:
 
