@@ -8,6 +8,8 @@ use \Prototypemvc\Core\File;
 
 class Config {
 
+    private static $config;
+
     /** 
     * Get value(s) from config. 
     * @param use params to move deeper into array 
@@ -97,21 +99,30 @@ class Config {
 
     /** 
     * Stack custom config on top of default config to get a complete config array.  
+    * If isset static $config, use it to prevent loading a file over and over again. 
     * @param use params to move deeper into array 
     * @return array with merged config 
     */ 
     private static function getConfig() {
 
-        $default = Format::jsonToArray(File::get('../config/default.config.json'));
-        $custom = Format::jsonToArray(File::get('../config/custom.config.json'));
+        if(!isset(self::$config)) {
 
-        if ($default && $custom) {
+            $default = Format::jsonToArray(File::get('../config/default.config.json'));
+            $custom = Format::jsonToArray(File::get('../config/custom.config.json'));
 
-            return self::merge($default, $custom);
-        } else if ($default) {
+            if ($default && $custom) {
 
-            return $default;
+                self::$config = self::merge($default, $custom);
+            } else if ($default) {
+
+                self::$config = $default;
+            }
         }
+
+        if(isset(self::$config)) {
+
+            return self::$config;
+        }        
 
         return false;
     }
