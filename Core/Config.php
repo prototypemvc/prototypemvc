@@ -88,7 +88,12 @@ class Config {
 
             $configJson = Format::toJson($config, true);
 
-            if (File::write('../config/custom.config.json', $configJson)) {
+            if(isset(self::$config)) {
+
+                self::$config = $config;
+            }
+
+            if(File::write('../config/custom.config.json', $configJson)) {
 
                 return true;
             }
