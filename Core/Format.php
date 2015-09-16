@@ -81,9 +81,14 @@ class Format {
     * @param string delimiter on which the string will explode   
     * @return array of exploded string 
     */
-    public static function stringToArray($string = false, $delimiter = ' ') {
+    public static function stringToArray($string = false, $delimiter = ' ', $limit = false) {
 
         if ($string && Validate::isString($string)) {
+
+            if($limit) {
+
+                return explode($delimiter, $string, $limit);
+            }
 
             return explode($delimiter, $string);
         }
