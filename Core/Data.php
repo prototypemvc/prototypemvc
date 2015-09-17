@@ -183,6 +183,28 @@ class Data {
     }
 
     /** 
+    * Sanitize input. 
+    * @param array || string
+    * @return array || string
+    */ 
+    public function sanitize($input = false) {
+
+        if($input) {
+
+            if(Validate::isArray($input)) {
+
+                return filter_var_array($input,FILTER_SANITIZE_STRING);
+            } 
+            if(Validate::isString($input)) {
+                
+                return filter_var($input, FILTER_SANITIZE_STRING);
+            } 
+        }
+
+        return false;
+    }
+
+    /** 
     * Retrieve value(s) from SESSION.  
     * @param string key 
     * @return array || string
