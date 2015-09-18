@@ -97,7 +97,7 @@ class Bootstrap {
             return false;
         }
 
-        call_user_method_array($this->_url_method, $this->_controller, $this->_url_args);
+        call_user_func_array(array($this->_controller, $this->_url_method), $this->_url_args);
     }
 
     /**
