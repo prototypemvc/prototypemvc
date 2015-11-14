@@ -349,4 +349,19 @@ class Format {
         return false;
     }
 
+    /** 
+    * Format XML string into array 
+    * @param string input 
+    * @return array 
+    */
+    public function xmlToArray($input = false) {
+
+        if($input && Validate::isString($input)) {
+
+            simplexml_load_string($string);
+        }
+
+        return false;
+    }
+
 }
