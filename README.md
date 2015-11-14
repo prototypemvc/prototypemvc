@@ -5,7 +5,7 @@
 Require prototypemvc in your project by using:
 
 ```
-composer require prototypemvc/prototypemvc
+composer require prototypemvc/prototypemvc master-dev
 ```
 
 ## Acknowledgement
