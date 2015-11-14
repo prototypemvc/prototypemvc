@@ -6,9 +6,13 @@ use \Curl\Curl;
 
 class Request {
 
-	public function delete($url = false, array $params) {
+	public function delete($url = false, $params = false) {
 
 		if($url) {
+
+			if($params === false) {
+				$params = array();
+			}
 
 			$curl = new Curl();
 			$curl->delete($url, $params);
@@ -24,9 +28,13 @@ class Request {
 		return false;
 	}
 
-	public function get($url = false, array $params) {
+	public function get($url = false, $params = false) {
 
 		if($url) {
+
+			if($params === false) {
+				$params = array();
+			}
 
 			$curl = new Curl();
 			$curl->get($url, $params);
@@ -42,9 +50,13 @@ class Request {
 		return false;
 	}
 
-	public function post($url = false, array $params) {
+	public function post($url = false, $params = false) {
 
 		if($url) {
+
+			if($params === false) {
+				$params = array();
+			}
 
 			$curl = new Curl();
 			$curl->post($url, $params);
@@ -60,9 +72,13 @@ class Request {
 		return false;
 	}
 
-	public function put($url = false, array $params) {
+	public function put($url = false, $params = false) {
 
 		if($url) {
+
+			if($params === false) {
+				$params = array();
+			}
 
 			$curl = new Curl();
 			$curl->put($url, $params);
