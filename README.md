@@ -2,10 +2,18 @@
 
 ## rapid prototyping
 
-Require prototypemvc in your project by using:
+Install framework:
 
 ```
 composer require prototypemvc/prototypemvc master-dev
+```
+
+OR 
+
+Install skeleton application:
+
+```
+composer create-project prototypemvc/prototypemvc-skeleton myapplication -s dev
 ```
 
 ## Acknowledgement
