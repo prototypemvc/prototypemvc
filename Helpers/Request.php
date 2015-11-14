@@ -4,7 +4,7 @@ namespace Prototypemvc\Helpers;
 
 use \Curl\Curl;
 
-class Url {
+class Request {
 
 	public function delete($url = false, array $params) {
 
