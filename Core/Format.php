@@ -358,7 +358,7 @@ class Format {
 
         if($input && Validate::isString($input)) {
 
-            simplexml_load_string($string);
+            return simplexml_load_string($string);
         }
 
         return false;
