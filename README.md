@@ -2,6 +2,9 @@
 
 Rapid prototyping with PHP (5.5+)
 
+## No stable release yet  
+Play around if you like, but keep in mind that it's very likely we'll change things up quite a bit over time. 
+
 ## Docs
 
 [Basic overview](https://github.com/prototypemvc/docs)
