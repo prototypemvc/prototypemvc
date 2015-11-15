@@ -1,6 +1,12 @@
 #prototypemvc
 
-## rapid prototyping
+Rapid prototyping  
+
+## Docs
+
+[Basic overview](https://github.com/prototypemvc/docs)
+
+## Install
 
 Install framework:
 
