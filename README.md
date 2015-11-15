@@ -1,6 +1,6 @@
 #prototypemvc
 
-Rapid prototyping  
+Rapid prototyping with PHP (5.5+)
 
 ## Docs
 
