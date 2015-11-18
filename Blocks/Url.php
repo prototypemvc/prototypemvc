@@ -1,8 +1,8 @@
 <?php
 
-namespace Prototypemvc\Helpers;
+namespace Prototypemvc\Blocks;
 
-use \Prototypemvc\Helpers\Session;
+use \Prototypemvc\Blocks\Session;
 
 class Url {
 

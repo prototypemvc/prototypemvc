@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototypemvc\Core;
+namespace Prototypemvc\Blocks;
 
 class Text {
 

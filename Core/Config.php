@@ -2,9 +2,9 @@
 
 namespace Prototypemvc\Core;
 
-use \Prototypemvc\Core\Format;
-use \Prototypemvc\Core\Data;
-use \Prototypemvc\Core\File;
+use \Prototypemvc\Blocks\Data;
+use \Prototypemvc\Blocks\File;
+use \Prototypemvc\Blocks\Format;
 
 class Config {
 

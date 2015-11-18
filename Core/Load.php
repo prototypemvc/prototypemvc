@@ -2,9 +2,9 @@
 
 namespace Prototypemvc\Core;
 
-use \Prototypemvc\Core\View;
-use \Prototypemvc\Core\File;
 use \Prototypemvc\Core\Model;
+use \Prototypemvc\Core\View;
+use \Prototypemvc\Blocks\File;
 
 class Load {
 

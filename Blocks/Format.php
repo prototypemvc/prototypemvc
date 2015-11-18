@@ -1,9 +1,9 @@
 <?php
 
-namespace Prototypemvc\Core;
+namespace Prototypemvc\Blocks;
 
-use \Prototypemvc\Core\Data;
-use \Prototypemvc\Core\Validate;
+use \Prototypemvc\Blocks\Data;
+use \Prototypemvc\Blocks\Validate;
 
 class Format {
 

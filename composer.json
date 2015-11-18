@@ -20,7 +20,7 @@
     "autoload": {
         "psr-4": {
             "Prototypemvc\\Core\\": "Core/",
-            "Prototypemvc\\Helpers\\": "Helpers/"
+            "Prototypemvc\\Blocks\\": "Blocks/"
         }
     }
 }

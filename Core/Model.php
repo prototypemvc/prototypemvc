@@ -3,7 +3,7 @@
 namespace Prototypemvc\Core;
 
 use \Prototypemvc\Core\Config;
-use \Prototypemvc\Core\File;
+use \Prototypemvc\Blocks\File;
 
 class Model {
 

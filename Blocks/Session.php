@@ -1,9 +1,9 @@
 <?php
 
-namespace Prototypemvc\Helpers;
+namespace Prototypemvc\Blocks;
 
 use \Prototypemvc\Core\Config;
-use \Prototypemvc\Core\Data;
+use \Prototypemvc\Blocks\Data;
 
 class Session {
 

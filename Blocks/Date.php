@@ -1,6 +1,6 @@
 <?php
 
-namespace Prototypemvc\Helpers;
+namespace Prototypemvc\Blocks;
 
 use \DateTime;
 

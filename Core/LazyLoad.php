@@ -40,8 +40,8 @@ class LazyLoad {
             if (!class_exists($class)) {
                if(class_exists('Prototypemvc\Core\\' . $class)) {
                     class_alias('Prototypemvc\Core\\' . $class, $class);
-               } else if(class_exists('Prototypemvc\Helpers\\' . $class)) {
-                    class_alias('Prototypemvc\Helpers\\' . $class, $class);
+               } else if(class_exists('Prototypemvc\Blocks\\' . $class)) {
+                    class_alias('Prototypemvc\Blocks\\' . $class, $class);
                }
             }
         }

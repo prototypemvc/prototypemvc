@@ -2,10 +2,10 @@
 
 namespace Prototypemvc\Core;
 
-use \Prototypemvc\Core\Text;
 use \Prototypemvc\Core\Config;
-use \Prototypemvc\Core\File;
-use \Prototypemvc\Core\Format;
+use \Prototypemvc\Blocks\File;
+use \Prototypemvc\Blocks\Format;
+use \Prototypemvc\Blocks\Text;
 
 class view {
 

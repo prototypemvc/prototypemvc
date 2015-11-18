@@ -2,7 +2,7 @@
 
 namespace Prototypemvc\Core;
 
-use \Prototypemvc\Helpers\Session;
+use \Prototypemvc\Blocks\Session;
 
 class Bootstrap {
 
