@@ -13,9 +13,16 @@
             "name": "Rick van der Wolk"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/prototypeblocks/php-number.git"
+        },
+    ],
     "require": {
         "php": ">=5.5.0",
-        "php-curl-class/php-curl-class": "^4.8"
+        "php-curl-class/php-curl-class": "^4.8",
+        "prototypeblocks/php-number": "dev-master"
     },
     "autoload": {
         "psr-4": {
