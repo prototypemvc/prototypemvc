@@ -73,7 +73,7 @@ class Date {
     */ 
     public static function format($date = false, $format = 'Y-m-d H:i:s') {
 
-        if($data) {
+        if($date) {
 
             $DateTime = new DateTime($date);
             return $DateTime->format($format);
