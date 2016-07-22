@@ -19,7 +19,7 @@ class Database extends PDO{
 
 	}
 
-	public function select($sql,$array = array(), $fetchMode = PDO::FETCH_OBJ){
+	public function select($sql,$array = array(), $fetchMode = PDO::FETCH_ASSOC){
 
 		$stmt = $this->prepare($sql);
 		foreach($array as $key => $value){
